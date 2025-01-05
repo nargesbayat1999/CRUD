@@ -4,20 +4,24 @@ package org.example.crud.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 @Entity
 public class Data {
-    @id @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int id;
-    private  String name;
-    private  int phone;
 
-    public int getPhone() {
-        return phone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private  long id;
+    private  String name;
+    private  String phone;
+
+    public long getId() {
+        return id;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,11 +32,11 @@ public class Data {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
