@@ -1,17 +1,17 @@
-package org.example.crud.Service;
+package org.bayat.crud.service;
 
-import org.example.crud.Entity.Data;
-import org.example.crud.Repository.DataRepository;
+import org.bayat.crud.model.entity.Data;
+import org.bayat.crud.model.repository.DataRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class CrudService {
+public class CrudServiceSmile implements CrudService {
 
     private final DataRepository dataRepository;
 
-    public CrudService(DataRepository dataRepository) {
+    public CrudServiceSmile(DataRepository dataRepository) {
         this.dataRepository = dataRepository;
     }
 
