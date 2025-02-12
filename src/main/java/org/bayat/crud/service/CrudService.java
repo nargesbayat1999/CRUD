@@ -1,14 +1,15 @@
 package org.bayat.crud.service;
 
+import org.bayat.crud.model.dto.DataDTO;
 import org.bayat.crud.model.entity.Data;
-import org.bayat.crud.view.controller.dto.DataDTO;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
 public interface CrudService {
-    public void delete(Data data);
+    public void delete(int id);
+    public void add (@RequestBody DataDTO dataDTO);
+    public void saveOrUpdate(DataDTO dataDTO);
 
-    public void saveOrUpdate(DataDTO datac);
-
-    public Optional<Data> findById(Integer id);
+    public DataDTO findById(Integer id);
 }
