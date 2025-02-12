@@ -1,0 +1,128 @@
+Index: src/main/java/org/bayat/crud/view/controller/DataController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.bayat.crud.view.controller;\r\n\r\n\r\nimport org.bayat.crud.model.entity.DataC;\r\nimport org.bayat.crud.service.CrudServiceSmile;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Optional;\r\n\r\n@RequestMapping(\"/Data\")\r\n@RestController\r\npublic class DataController {\r\n   final CrudServiceSmile crudServiceSmile;\r\n\r\n    public DataController(CrudServiceSmile crudServiceSmile) {\r\n\r\n        this.crudServiceSmile = crudServiceSmile;\r\n    }\r\n\r\n    @GetMapping(\"/id\")\r\n    public void getData(@RequestParam int id) {\r\n        crudServiceSmile.findById(id);\r\n    }\r\n\r\n    @PostMapping(\"/add\")\r\n    public void addData(@RequestBody DataC datac) {\r\n        crudServiceSmile.saveOrUpdate(datac);\r\n    }\r\n\r\n    @DeleteMapping(\"/delete\")\r\n    public void deleteData(@RequestParam int id) {\r\n        Optional<DataC> datac = crudServiceSmile.findById(id);\r\n        if (datac.isPresent()) {\r\n            crudServiceSmile.delete (datac.get());\r\n        } else {\r\n\r\n            System.out.println(\"Data not found with id: \" + id);\r\n        }\r\n    }\r\n\r\n}\r\n\r\n
+===================================================================
+diff --git a/src/main/java/org/bayat/crud/view/controller/DataController.java b/src/main/java/org/bayat/crud/view/controller/DataController.java
+--- a/src/main/java/org/bayat/crud/view/controller/DataController.java	(revision 34f06beadc91656d67b3dc4ad89e97a77e5d790f)
++++ b/src/main/java/org/bayat/crud/view/controller/DataController.java	(date 1739280168773)
+@@ -1,7 +1,7 @@
+ package org.bayat.crud.view.controller;
+ 
+ 
+-import org.bayat.crud.model.entity.DataC;
++import org.bayat.crud.view.controller.dto.DataC;
+ import org.bayat.crud.service.CrudServiceSmile;
+ import org.springframework.web.bind.annotation.*;
+ 
+Index: src/main/java/org/bayat/crud/service/CrudService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.bayat.crud.service;\r\n\r\nimport org.bayat.crud.model.entity.DataC;\r\n\r\n\r\nimport java.util.Optional;\r\n\r\npublic interface CrudService {\r\n    public void delete(DataC datac);\r\n    public void saveOrUpdate(DataC datac);\r\n    public Optional<DataC> findById(Integer id);\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/org/bayat/crud/service/CrudService.java b/src/main/java/org/bayat/crud/service/CrudService.java
+--- a/src/main/java/org/bayat/crud/service/CrudService.java	(revision 34f06beadc91656d67b3dc4ad89e97a77e5d790f)
++++ b/src/main/java/org/bayat/crud/service/CrudService.java	(date 1739280486678)
+@@ -1,12 +1,15 @@
+ package org.bayat.crud.service;
+ 
+-import org.bayat.crud.model.entity.DataC;
+-
++import org.bayat.crud.model.entity.Data;
++import org.bayat.crud.view.controller.dto.DataC;
+ 
+ import java.util.Optional;
+ 
+ public interface CrudService {
++
+     public void delete(DataC datac);
++
+     public void saveOrUpdate(DataC datac);
++
+     public Optional<DataC> findById(Integer id);
+ }
+Index: src/main/java/org/bayat/crud/model/repository/DataRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.bayat.crud.model.repository;\r\n\r\nimport org.bayat.crud.model.entity.Data;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.stereotype.Repository;\r\n\r\n@Repository\r\npublic interface DataRepository extends JpaRepository<Data, Integer> {\r\n\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/org/bayat/crud/model/repository/DataRepository.java b/src/main/java/org/bayat/crud/model/repository/DataRepository.java
+--- a/src/main/java/org/bayat/crud/model/repository/DataRepository.java	(revision 34f06beadc91656d67b3dc4ad89e97a77e5d790f)
++++ b/src/main/java/org/bayat/crud/model/repository/DataRepository.java	(date 1739280168825)
+@@ -6,6 +6,4 @@
+ 
+ @Repository
+ public interface DataRepository extends JpaRepository<Data, Integer> {
+-
+-
+ }
+Index: src/main/java/org/bayat/crud/service/CrudServiceSmile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.bayat.crud.service;\r\n\r\nimport org.bayat.crud.model.entity.Data;\r\nimport org.bayat.crud.model.entity.DataC;\r\nimport org.bayat.crud.model.repository.DataRepository;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class CrudServiceSmile implements CrudService {\r\n\r\n    private final DataRepository dataRepository;\r\n\r\n\r\n\r\n    public CrudServiceSmile(DataRepository dataRepository) {\r\n        this.dataRepository = dataRepository;\r\n    }\r\n\r\n\r\n    public void delete(DataC datac) {\r\n        Data data=new Data();\r\n        data.setId(datac.getId());\r\n        dataRepository.delete(data);\r\n    }\r\n\r\n    public void saveOrUpdate(DataC datac) {\r\n        Data data=new Data();\r\n        data.setId(datac.getId());\r\n        data.setPhone(datac.getPhone());\r\n        data.setName(datac.getName());\r\n        dataRepository.save(data);\r\n    }\r\n\r\n    public Optional<DataC> findById(Integer id) {\r\n        return dataRepository.findById(id);\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/org/bayat/crud/service/CrudServiceSmile.java b/src/main/java/org/bayat/crud/service/CrudServiceSmile.java
+--- a/src/main/java/org/bayat/crud/service/CrudServiceSmile.java	(revision 34f06beadc91656d67b3dc4ad89e97a77e5d790f)
++++ b/src/main/java/org/bayat/crud/service/CrudServiceSmile.java	(date 1739280486656)
+@@ -1,7 +1,7 @@
+ package org.bayat.crud.service;
+ 
+ import org.bayat.crud.model.entity.Data;
+-import org.bayat.crud.model.entity.DataC;
++import org.bayat.crud.view.controller.dto.DataC;
+ import org.bayat.crud.model.repository.DataRepository;
+ import org.springframework.stereotype.Service;
+ 
+@@ -12,10 +12,11 @@
+ 
+     private final DataRepository dataRepository;
+ 
++    private final DataDeligator dataDeligator;
+ 
+-
+-    public CrudServiceSmile(DataRepository dataRepository) {
++    public CrudServiceSmile(DataRepository dataRepository, DataDeligator dataDeligator) {
+         this.dataRepository = dataRepository;
++        this.dataDeligator = dataDeligator;
+     }
+ 
+ 
+@@ -34,7 +35,8 @@
+     }
+ 
+     public Optional<DataC> findById(Integer id) {
+-        return dataRepository.findById(id);
++         Optional<Data> data = dataRepository.findById(id);
+     }
++
+ 
+ }
+Index: src/main/java/org/bayat/crud/model/entity/DataC.java
+===================================================================
+diff --git a/src/main/java/org/bayat/crud/model/entity/DataC.java b/src/main/java/org/bayat/crud/view/controller/dto/DataC.java
+rename from src/main/java/org/bayat/crud/model/entity/DataC.java
+rename to src/main/java/org/bayat/crud/view/controller/dto/DataC.java
+--- a/src/main/java/org/bayat/crud/model/entity/DataC.java	(revision 34f06beadc91656d67b3dc4ad89e97a77e5d790f)
++++ b/src/main/java/org/bayat/crud/view/controller/dto/DataC.java	(date 1739280486645)
+@@ -1,5 +1,6 @@
+-package org.bayat.crud.model.entity;
++package org.bayat.crud.view.controller.dto;
+ 
++import lombok.AllArgsConstructor;
+ import lombok.Getter;
+ import lombok.Setter;
+ 
+@@ -7,7 +8,13 @@
+ @Setter
+ public class DataC {
+ 
++    public DataC(String name, String phone) {
++        this.name = name;
++        this.phone = phone;
++    }
++
+     private  long id;
+     private  String name;
+     private  String phone;
++
+ }
