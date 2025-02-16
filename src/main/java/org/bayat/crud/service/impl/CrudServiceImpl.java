@@ -36,13 +36,24 @@ public class CrudServiceImpl implements CrudService {
         dataRepository.save(data);
     }
 
-    public void add (@RequestBody DataDTO dataDTO) {
+    public void add(@RequestBody DataDTO dataDTO) {
         dataRepository.save(mappingData.DataDtoTodata(dataDTO));
     }
 
     public DataDTO findById(Integer id) {
         Optional<Data> optionalData = dataRepository.findById(id);
         return optionalData.map(mappingData::DataToDataDto).orElse(null);
+    }
+
+    public void register(@RequestBody DataDTO dataDTO) {
+        Data data = mappingData.DataDtoTodata(dataDTO);
+        String phone = data.getPhone();
+        Optional<Data> data1 = dataRepository.findByPhone(phone);
+        if (data1.isPresent()) {
+            System.out.println("کاربر با این شماره تلفن ثبتنام شده");
+        } else {
+            dataRepository.save(data);
+        }
     }
 
 }

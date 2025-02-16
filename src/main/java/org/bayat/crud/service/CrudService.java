@@ -10,6 +10,6 @@ public interface CrudService {
     public void delete(int id);
     public void add (@RequestBody DataDTO dataDTO);
     public void saveOrUpdate(DataDTO dataDTO);
-
     public DataDTO findById(Integer id);
+   public void register(@RequestBody DataDTO dataDTO);
 }
