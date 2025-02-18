@@ -1,9 +1,11 @@
 package org.bayat.crud.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.bayat.crud.model.GenericResponse;
 import org.bayat.crud.model.dto.DataDTO;
 import org.bayat.crud.service.CrudService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 //@Deprecated
 @RequestMapping("/data/v1")
 @RestController
+@Slf4j
 public class DataController {
 
     final CrudService crudService;
@@ -19,88 +22,76 @@ public class DataController {
         this.crudService = crudService;
     }
 
-    //todo
-    @GetMapping("/getData")
+
+    @GetMapping(value = "/getData", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> getData(@RequestParam(name = "id") int id) {
         try {
-            DataDTO data = crudService.findById(id);
-            return ResponseEntity.ok(new GenericResponse<>("کاربر جستجو شده یافت شد", "56", data));
-        } catch (NullPointerException e) {
-            e.getMessage();
-            return ResponseEntity.notFound().build();
+            log.debug("getData service called");
+            return crudService.findById(id);
 
-        }
-        catch (IllegalArgumentException e) {
-            e.getMessage();
-            return null;
-        }
-        catch (Exception e) {
-            e.getMessage();
-            return null;
+        } catch (Exception e) {
+            log.error("unknown error is {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
 
 
-    @PutMapping("/add")
+    @PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> add(@RequestBody DataDTO dataDTO) {
         try {
-    crudService.add(dataDTO);
-            return ResponseEntity.ok(new GenericResponse<>("این کاربر به دیتا کاربران اضافه شد", "123", dataDTO));
+            log.debug("getData service called");
+            return crudService.add(dataDTO);
         } catch (IllegalArgumentException e) {
-            e.getMessage();
-            return null;
-        }
-        catch (Exception e) {
-            e.getMessage();
-            return null;
+            log.error("IllegalArgument error is {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            log.error("unknown error is {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
+
         }
     }
 
-
-
-
-    @DeleteMapping("/delete")
+    @DeleteMapping(value = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> delete(@RequestParam(name = "id") int id) {
-        try{
-            crudService.delete(id);
-            DataDTO data = crudService.findById(id);
-            return ResponseEntity.ok(new GenericResponse<>("کاربر با آیدی مورد نظر پاک شد", "2",data));
-        }catch (NullPointerException e) {
-            e.getMessage();
+        try {
+            log.debug("Delete service called");
+            return crudService.delete(id);
+        } catch (NullPointerException e) {
+            log.error("NullPointer error is {}", e.getMessage());
         }
-        return null;
+        return ResponseEntity.badRequest().build();
     }
 
 
-    @PatchMapping("/phone")
+    @PatchMapping(value = "/phone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> update(@RequestBody DataDTO dataDTO) {
         try {
-            crudService.saveOrUpdate(dataDTO);
+            log.debug("update service called");
+            crudService.update(dataDTO);
             return ResponseEntity.ok(new GenericResponse<>("شماره تلفن آپدیت شد", "7", dataDTO));
 
-        }
-        catch (NullPointerException e) {
-            e.getMessage();
+        } catch (NullPointerException e) {
+            log.error("NullPointer error is {}", e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        } catch (Exception e) {
+            log.error("unknown error is {}", e.getMessage());
+            return ResponseEntity.internalServerError().build();
+
         }
 
-        catch (Exception e) {
-            e.getMessage();
-        }
-
-        return null;
     }
 
-  @PostMapping("/register")
-    public ResponseEntity<GenericResponse<DataDTO>> registerFerst(@RequestBody DataDTO dataDTO) {
-      try{
-          crudService.register(dataDTO);
-          return ResponseEntity.ok(new GenericResponse<>( "کاربر مورد نظر ثبت شد", "20", dataDTO));
-      } catch (Exception e) {
-          e.getMessage();
-          return null;
-      }
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GenericResponse<DataDTO>> registerFirst(@RequestBody DataDTO dataDTO) {
+        try {
+            log.debug("register service called");
+            return crudService.register(dataDTO);
+        } catch (Exception e) {
+            log.error("unknown error is {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
 
-  }
+    }
 
 }
 

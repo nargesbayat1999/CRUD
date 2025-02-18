@@ -1,16 +1,18 @@
 package org.bayat.crud.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@Table(
+        name="DATA",
+        uniqueConstraints=
+        @UniqueConstraint(columnNames={"phone"})
+)
 public class Data {
 
     @Id

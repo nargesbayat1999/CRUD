@@ -1,59 +1,79 @@
 package org.bayat.crud.service.impl;
 
+import org.bayat.crud.model.GenericResponse;
 import org.bayat.crud.model.dto.DataDTO;
 import org.bayat.crud.model.entity.Data;
 import org.bayat.crud.model.repository.DataRepository;
 import org.bayat.crud.service.CrudService;
 import org.bayat.crud.service.mapper.MappingData;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
 @Service
 public class CrudServiceImpl implements CrudService {
 
+
     private final DataRepository dataRepository;
     private final MappingData mappingData;
 
 
     public CrudServiceImpl(DataRepository dataRepository, MappingData mappingData) {
-        this.dataRepository = dataRepository;
         this.mappingData = mappingData;
+        this.dataRepository = dataRepository;
     }
 
-    public void delete(int id) {
+    public ResponseEntity<GenericResponse<DataDTO>> delete(@RequestParam(name = "id") int id) {
         Optional<Data> data = dataRepository.findById(id);
         if (data.isPresent()) {
             dataRepository.delete(data.get());
+
+            return ResponseEntity.ok(new GenericResponse<>("کاربر با آیدی مورد نظر پاک شد", "2", null));
         } else {
             System.out.println("Data not found with id: " + id);
+            return ResponseEntity.notFound().build();
         }
     }
 
-    public void saveOrUpdate(@RequestBody DataDTO dataDTO) {
-        Data data = mappingData.DataDtoTodata(dataDTO);
-        dataRepository.save(data);
+    public ResponseEntity<GenericResponse<DataDTO>> add(DataDTO dataDTO) {
+        try {
+        dataRepository.save(mappingData.dataDTOToData(dataDTO));
+
+            return ResponseEntity.ok(new GenericResponse<>("موفق", "201", null));
+        } catch (Exception e) {
+        }
+        return ResponseEntity.ok(new GenericResponse<>("خطای کاربر", "400", null));
     }
 
-    public void add(@RequestBody DataDTO dataDTO) {
-        dataRepository.save(mappingData.DataDtoTodata(dataDTO));
-    }
-
-    public DataDTO findById(Integer id) {
+    public ResponseEntity<GenericResponse<DataDTO>> findById(Integer id) {
         Optional<Data> optionalData = dataRepository.findById(id);
-        return optionalData.map(mappingData::DataToDataDto).orElse(null);
+        DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);
+        try {
+            return ResponseEntity.ok(new GenericResponse<>("کاربر مورد نظر یافت شد", "2", dataDTO));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
-    public void register(@RequestBody DataDTO dataDTO) {
-        Data data = mappingData.DataDtoTodata(dataDTO);
+    public ResponseEntity<GenericResponse<DataDTO>> register(DataDTO dataDTO) {
+        Data data = mappingData.dataDTOToData(dataDTO);
         String phone = data.getPhone();
-        Optional<Data> data1 = dataRepository.findByPhone(phone);
-        if (data1.isPresent()) {
-            System.out.println("کاربر با این شماره تلفن ثبتنام شده");
+        Optional<Data> returnedData = dataRepository.findByPhone(phone);
+        if (returnedData.isPresent()) {
+            data.setId(returnedData.get().getId());
+            dataRepository.save(data);
         } else {
             dataRepository.save(data);
         }
+        return ResponseEntity.ok(new GenericResponse<>("کاربر مورد نظر ثبت شد", "20", dataDTO));
+    }
+
+    public ResponseEntity<GenericResponse<DataDTO>> update(DataDTO dataDTO) {
+        dataRepository.save(mappingData.dataDTOToData(dataDTO));
+        return ResponseEntity.ok(new GenericResponse<>("شماره تلفن بروزرسانی شد", "200", dataDTO));
     }
 
 }

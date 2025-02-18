@@ -10,13 +10,13 @@ public class MappingData {
 
 
     //Data to Dto
-    public DataDTO DataToDataDto(Data data) {
+    public DataDTO dataToDataDTO(Data data) {
         DataDTO dataDTO = new DataDTO(data.getName(), data.getPhone());
         return dataDTO;
     }
 
     //Dto to Data
-    public Data DataDtoTodata(DataDTO dataDTO) {
+    public Data dataDTOToData(DataDTO dataDTO) {
         Data data = new Data();
         data.setPhone(dataDTO.getPhone());
         data.setName(dataDTO.getName());
