@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Rest full api">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Rest full V2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/dto/DataDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/dto/DataDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/entity/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/entity/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/CrudService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/CrudService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/controller/DataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/controller/DataController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/dto/DataDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/dto/DataDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/CrudService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/CrudService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/mapper/MappingData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/mapper/MappingData.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +184,7 @@
       <workItem from="1739281571290" duration="43163000" />
       <workItem from="1739614158090" duration="25195000" />
       <workItem from="1739701914287" duration="775000" />
-      <workItem from="1739706832600" duration="18003000" />
+      <workItem from="1739706832600" duration="28209000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -276,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739690359096</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Rest full V2">
+      <option name="closed" value="true" />
+      <created>1739871849787</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1739871849787</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +335,8 @@
     <MESSAGE value="new commit" />
     <MESSAGE value="lastvesion" />
     <MESSAGE value="Rest full api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rest full api" />
+    <MESSAGE value="Rest full V2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rest full V2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -41,10 +41,7 @@ public class DataController {
         try {
             log.debug("getData service called");
             return crudService.add(dataDTO);
-        } catch (IllegalArgumentException e) {
-            log.error("IllegalArgument error is {}", e.getMessage());
-            return ResponseEntity.badRequest().build();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             log.error("unknown error is {}", e.getMessage());
             return ResponseEntity.badRequest().build();
 
@@ -56,10 +53,11 @@ public class DataController {
         try {
             log.debug("Delete service called");
             return crudService.delete(id);
-        } catch (NullPointerException e) {
-            log.error("NullPointer error is {}", e.getMessage());
+        } catch (Exception e) {
+            log.error("unknown error is {}", e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.badRequest().build();
+
     }
 
 
@@ -67,18 +65,11 @@ public class DataController {
     public ResponseEntity<GenericResponse<DataDTO>> update(@RequestBody DataDTO dataDTO) {
         try {
             log.debug("update service called");
-            crudService.update(dataDTO);
-            return ResponseEntity.ok(new GenericResponse<>("شماره تلفن آپدیت شد", "7", dataDTO));
-
-        } catch (NullPointerException e) {
-            log.error("NullPointer error is {}", e.getMessage());
-            return ResponseEntity.internalServerError().build();
+        return  crudService.update(dataDTO);
         } catch (Exception e) {
             log.error("unknown error is {}", e.getMessage());
             return ResponseEntity.internalServerError().build();
-
         }
-
     }
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -88,7 +79,7 @@ public class DataController {
             return crudService.register(dataDTO);
         } catch (Exception e) {
             log.error("unknown error is {}", e.getMessage());
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.internalServerError().build();
         }
 
     }
