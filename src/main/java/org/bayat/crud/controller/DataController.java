@@ -61,7 +61,7 @@ public class DataController {
     }
 
 
-    @PatchMapping(value = "/phone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/phoneEdite", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> update(@RequestBody DataDTO dataDTO) {
         try {
             log.debug("update service called");
