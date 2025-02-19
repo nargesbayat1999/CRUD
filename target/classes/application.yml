@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: crud
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crud
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8081
+
+

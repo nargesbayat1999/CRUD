@@ -3,7 +3,6 @@ package org.bayat.crud.service;
 import org.bayat.crud.model.GenericResponse;
 import org.bayat.crud.model.dto.DataDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 
 public interface CrudService {
     public ResponseEntity<GenericResponse<DataDTO>> delete(int id);

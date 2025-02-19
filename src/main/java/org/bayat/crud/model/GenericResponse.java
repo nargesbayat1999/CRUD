@@ -1,15 +1,18 @@
 package org.bayat.crud.model;
 
-    public class GenericResponse<T> {
+import lombok.Data;
 
-        private String errorCode;
-        private String message;
-        private T data;
+@Data
+public class GenericResponse<T> {
 
-        public GenericResponse(String message, String errorCode, T data) {
-            this.message = message;
-            this.errorCode = errorCode;
-            this.data = data;
-        }
+    private String errorCode;
+    private String message;
+    private T data;
+
+    public GenericResponse(String message, String errorCode, T data) {
+        this.message = message;
+        this.errorCode = errorCode;
+        this.data = data;
     }
+}
 

@@ -8,7 +8,6 @@ import org.bayat.crud.service.CrudService;
 import org.bayat.crud.service.mapper.MappingData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
@@ -29,23 +28,23 @@ public class CrudServiceImpl implements CrudService {
     public ResponseEntity<GenericResponse<DataDTO>> delete(@RequestParam(name = "id") int id) {
         Optional<Data> data = dataRepository.findById(id);
         if (data.isPresent()) {
-            dataRepository.delete(data.get());
 
             return ResponseEntity.ok(new GenericResponse<>("کاربر با آیدی مورد نظر پاک شد", "2", null));
         } else {
             System.out.println("Data not found with id: " + id);
+
             return ResponseEntity.notFound().build();
         }
     }
 
     public ResponseEntity<GenericResponse<DataDTO>> add(DataDTO dataDTO) {
         try {
-        dataRepository.save(mappingData.dataDTOToData(dataDTO));
-
-            return ResponseEntity.ok(new GenericResponse<>("موفق", "201", null));
+            dataRepository.save(mappingData.dataDTOToData(dataDTO));
+            return ResponseEntity.ok(new GenericResponse<>("موفق", "201", dataDTO));
         } catch (Exception e) {
+            return ResponseEntity.ok(new GenericResponse<>("خطای کاربر", "400", null));
         }
-        return ResponseEntity.ok(new GenericResponse<>("خطای کاربر", "400", null));
+
     }
 
     public ResponseEntity<GenericResponse<DataDTO>> findById(Integer id) {
@@ -59,21 +58,24 @@ public class CrudServiceImpl implements CrudService {
     }
 
     public ResponseEntity<GenericResponse<DataDTO>> register(DataDTO dataDTO) {
-        Data data = mappingData.dataDTOToData(dataDTO);
-        String phone = data.getPhone();
-        Optional<Data> returnedData = dataRepository.findByPhone(phone);
-        if (returnedData.isPresent()) {
-            data.setId(returnedData.get().getId());
-            dataRepository.save(data);
-        } else {
-            dataRepository.save(data);
+        try {
+            Data data = mappingData.dataDTOToData(dataDTO);
+            Optional<Data> returnedData = dataRepository.findByPhone(data.getPhone());
+            if (returnedData.isPresent()) {
+                data.setId(returnedData.get().getId());
+                dataRepository.save(data);
+            } else {
+                dataRepository.save(data);
+            }
+            return ResponseEntity.ok(new GenericResponse<>("کاربر مورد نظر ثبت شد", "20", dataDTO));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
         }
-        return ResponseEntity.ok(new GenericResponse<>("کاربر مورد نظر ثبت شد", "20", dataDTO));
+
     }
 
     public ResponseEntity<GenericResponse<DataDTO>> update(DataDTO dataDTO) {
         dataRepository.save(mappingData.dataDTOToData(dataDTO));
         return ResponseEntity.ok(new GenericResponse<>("شماره تلفن بروزرسانی شد", "200", dataDTO));
     }
-
 }
