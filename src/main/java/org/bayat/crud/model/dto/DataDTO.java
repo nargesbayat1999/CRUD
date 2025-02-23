@@ -9,6 +9,7 @@ public class DataDTO {
 
     @Size(min=2, max=50)
     private String name;
+
     @NotNull
     private String phone;
 
