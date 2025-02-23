@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DataRepository extends JpaRepository<Data, Integer> {
+public interface DataRepository extends JpaRepository<Data, Long> {
     Optional<Data> findByPhone(String phone);
 
 

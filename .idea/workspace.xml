@@ -4,27 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Rest full V3">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/enums/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_11_2025_5_05_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_11_2025_5_05_PM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_11_2025_5_19_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_11_2025_5_19_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Rest full V4">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/GlobalControllerExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/GenericResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/GenericResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/dto/DataDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/dto/DataDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/entity/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/entity/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/enums/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/enums/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/repository/DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/model/repository/DataRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/CrudService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/CrudService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/controller/DataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/controller/DataController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/GenericResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/GenericResponse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/dto/DataDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/dto/DataDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/entity/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/entity/Data.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/repository/DataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/model/repository/DataRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/CrudService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/CrudService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImpl.class" afterDir="false" />
     </list>
@@ -37,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -98,7 +92,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.CrudApplication (1).executor": "Run",
-    "Spring Boot.CrudApplication.executor": "Run",
+    "Spring Boot.CrudApplication.executor": "Debug",
     "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "Crud-Test-Generic-Response",
     "kotlin-language-version-configured": "true",
@@ -121,6 +115,9 @@
     ]
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\Crud\src\main\java" />
@@ -151,7 +148,7 @@
         </pattern>
       </extension>
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="clean package" />
       </method>
     </configuration>
     <recent_temporary>
@@ -200,7 +197,7 @@
       <workItem from="1739281571290" duration="43163000" />
       <workItem from="1739614158090" duration="25195000" />
       <workItem from="1739701914287" duration="775000" />
-      <workItem from="1739706832600" duration="52707000" />
+      <workItem from="1739706832600" duration="99734000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -314,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739886864643</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Rest full V4">
+      <option name="closed" value="true" />
+      <created>1739968493492</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739968493492</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +374,8 @@
     <MESSAGE value="Rest full api" />
     <MESSAGE value="Rest full V2" />
     <MESSAGE value="Rest full V3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rest full V3" />
+    <MESSAGE value="Rest full V4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rest full V4" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
