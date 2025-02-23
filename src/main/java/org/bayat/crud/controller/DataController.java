@@ -68,7 +68,7 @@ public class DataController {
             return crudService.edit(dataDTO);
         } catch (Exception e) {
             log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.internalServerError().build();
 
         }
     }
@@ -87,7 +87,7 @@ public class DataController {
             return crudService.delete(id);
         } catch (Exception e) {
             log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.internalServerError().build();
         }
 
     }
