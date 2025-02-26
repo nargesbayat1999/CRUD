@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface DataRepository extends JpaRepository<Data, Long> {
+
     Optional<Data> findByPhone(String phone);
-
-
 }

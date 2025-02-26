@@ -50,7 +50,6 @@ public class DataController {
         }
     }
 
-
     @Operation(summary = "edit data or add")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "add data or edit",
@@ -60,8 +59,8 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @PutMapping(value = "/edite", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GenericResponse<DataDTO>> edit (@Valid @RequestBody DataDTO dataDTO) {
+    @PutMapping(value = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GenericResponse<DataDTO>> edit(@Valid @RequestBody DataDTO dataDTO) {
         try {
             log.debug(Message.Edit_SERVICE_CALL.getMessage());
 
@@ -102,7 +101,7 @@ public class DataController {
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
     @PatchMapping(value = "/editPhone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GenericResponse<DataDTO>> update(@RequestBody DataDTO dataDTO) {
+    public ResponseEntity<GenericResponse<DataDTO>> update(@Valid@RequestBody DataDTO dataDTO) {
         try {
             log.debug(Message.EDIT_PHONE_SERVICE_CALL.getMessage());
             return crudService.update(dataDTO);
@@ -121,8 +120,8 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GenericResponse<DataDTO>> insert(@RequestBody DataDTO dataDTO) {
+    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GenericResponse<DataDTO>> insert(@Valid@RequestBody DataDTO dataDTO) {
         try {
             log.debug(Message.REGISTER_SERVICE_CALL.getMessage());
             return crudService.insert(dataDTO);
