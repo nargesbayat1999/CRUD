@@ -84,7 +84,10 @@ public class CrudServiceImplData implements CrudService {
         Optional<Data> optionalData = dataRepository.findById(id);
         DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);
         try {
-            return ResponseEntity.ok(new GenericResponse<>(Message.FIND_USER.getMessage(), "2", dataDTO));
+            if (dataDTO != null) {
+                return ResponseEntity.ok(new GenericResponse<>(Message.FIND_USER.getMessage(), "2", dataDTO));
+            }
+            return ResponseEntity.notFound().build();
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
