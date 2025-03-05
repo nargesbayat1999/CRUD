@@ -14,8 +14,6 @@ public class MappingData {
         DataDTO dataDTO = new DataDTO();
         dataDTO.setName(data.getName());
         dataDTO.setPhone(data.getPhone());
-        About about = new About();
-        dataDTO.setAddress(about.getAddress());
         return dataDTO;
     }
 

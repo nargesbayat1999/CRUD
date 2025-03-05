@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="About and Data relation">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/DataControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/91f6fb59-dbe9-4cdb-b9d3-3a3099db395d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/91f6fb59-dbe9-4cdb-b9d3-3a3099db395d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/91f6fb59-dbe9-4cdb-b9d3-3a3099db395d/storage_v2/_src_/database/crud.PrsuAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/91f6fb59-dbe9-4cdb-b9d3-3a3099db395d/storage_v2/_src_/database/crud.PrsuAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="junit test v1">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/GlobalControllerExceptionHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImplData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImplData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/CrudApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/CrudApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/GlobalControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/GlobalControllerExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/CrudApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +78,15 @@
     "Application.B.executor": "Run",
     "Application.CrudApplication.executor": "Run",
     "Application.MainSample.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.executor": "Run",
     "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.testGetData_NoData.executor": "Run",
+    "JUnit.GlobalControllerExceptionHandlerTest.testHandle.executor": "Run",
+    "JUnit.MappingDataTest.convertExistedDataDTOtoData.executor": "Run",
+    "JUnit.MappingDataTest.convertNewDataDTOtoDataTest.executor": "Run",
+    "JUnit.MappingDataTest.executor": "Run",
+    "JUnit.MappingDatatest.dataToDataDTOTest.executor": "Run",
+    "JUnit.MappingDatatest.executor": "Run",
     "JUnit.SampleTest.test.executor": "Run",
     "Maven.Crud [clean,package].executor": "Run",
     "Maven.Crud [clean].executor": "Run",
@@ -99,6 +105,7 @@
     "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "Junit",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "D:/projects/Crud/src/test/java/org/bayat/crud/service",
     "last_opened_file_path": "D:/projects/Crud/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -128,39 +135,90 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\.m2\repository\org\hibernate\orm\hibernate-core\6.6.4.Final\hibernate-core-6.6.4.Final.jar!\org\hibernate\annotations\processing" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.bayat.crud.service.mapper" />
+      <recent name="org.bayat.crud.controller" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.bayat.crud.service.impl" />
       <recent name="org.bayat.crud.service.mapper" />
       <recent name="org.bayat.crud.model.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataControllerTest">
-    <configuration name="DataControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest">
+    <configuration name="CrudServiceImplDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.controller.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.controller" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.controller.DataControllerTest" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataControllerTest.testGetData_NoData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MappingDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.controller.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.controller" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.controller.DataControllerTest" />
-      <option name="METHOD_NAME" value="testGetData_NoData" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MappingDataTest.convertExistedDataDTOtoData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
+      <option name="METHOD_NAME" value="convertExistedDataDTOtoData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MappingDataTest.convertNewDataDTOtoDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
+      <option name="METHOD_NAME" value="convertNewDataDTOtoDataTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MappingDataTest.dataToDataDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
+      <option name="METHOD_NAME" value="dataToDataDTOTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -175,25 +233,13 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <configuration name="CrudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="Crud" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.bayat.crud.CrudApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.bayat.crud.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="clean package" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataControllerTest" />
-        <item itemvalue="JUnit.DataControllerTest.testGetData_NoData" />
-        <item itemvalue="Spring Boot.CrudApplication" />
-        <item itemvalue="Spring Boot.CrudApplication" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest" />
+        <item itemvalue="JUnit.MappingDataTest" />
+        <item itemvalue="JUnit.MappingDataTest.convertExistedDataDTOtoData" />
+        <item itemvalue="JUnit.MappingDataTest.convertNewDataDTOtoDataTest" />
+        <item itemvalue="JUnit.MappingDataTest.dataToDataDTOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +290,8 @@
       <workItem from="1740897299756" duration="3716000" />
       <workItem from="1740984852517" duration="55000" />
       <workItem from="1740984949817" duration="64000" />
-      <workItem from="1740985200002" duration="7811000" />
+      <workItem from="1740985200002" duration="25918000" />
+      <workItem from="1741088612268" duration="17179000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -414,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740578189067</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="junit test v1">
+      <option name="closed" value="true" />
+      <created>1741003781747</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1741003781747</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +531,8 @@
     <MESSAGE value="dataDTO" />
     <MESSAGE value="git ignore" />
     <MESSAGE value="About and Data relation" />
-    <option name="LAST_COMMIT_MESSAGE" value="About and Data relation" />
+    <MESSAGE value="junit test v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="junit test v1" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

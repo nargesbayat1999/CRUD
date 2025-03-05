@@ -82,6 +82,7 @@ class  DataControllerTest {
         assertNotNull(result.getBody());
         assertEquals(dataDTO, result.getBody().getData());
         verify(crudService, times(1)).edit(dataDTO);
+
     }
 
     @Test
