@@ -1,0 +1,3 @@
+org\bayat\crud\controller\DataControllerTest.class
+org\bayat\crud\controller\GlobalControllerExceptionHandlerTest.class
+org\bayat\crud\service\mapper\MappingDataTest.class

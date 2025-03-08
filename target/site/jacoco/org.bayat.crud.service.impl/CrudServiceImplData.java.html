@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CrudServiceImplData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Crud</a> &gt; <a href="index.source.html" class="el_package">org.bayat.crud.service.impl</a> &gt; <span class="el_source">CrudServiceImplData.java</span></div><h1>CrudServiceImplData.java</h1><pre class="source lang-java linenums">package org.bayat.crud.service.impl;
+
+import org.bayat.crud.model.GenericResponse;
+import org.bayat.crud.model.dto.DataDTO;
+import org.bayat.crud.model.entity.About;
+import org.bayat.crud.model.entity.Data;
+import org.bayat.crud.model.enums.Message;
+import org.bayat.crud.model.repository.AboutRepository;
+import org.bayat.crud.model.repository.DataRepository;
+import org.bayat.crud.service.CrudService;
+import org.bayat.crud.service.mapper.MappingData;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CrudServiceImplData implements CrudService {
+
+
+    private final DataRepository dataRepository;
+    private final MappingData mappingData;
+    private final AboutRepository aboutRepository;
+
+
+<span class="fc" id="L28">    public CrudServiceImplData(DataRepository dataRepository, MappingData mappingData, AboutRepository aboutRepository) {</span>
+<span class="fc" id="L29">        this.mappingData = mappingData;</span>
+<span class="fc" id="L30">        this.dataRepository = dataRepository;</span>
+<span class="fc" id="L31">        this.aboutRepository = aboutRepository;</span>
+<span class="fc" id="L32">    }</span>
+
+    @Transactional
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; delete(long id) {
+<span class="fc" id="L36">        Optional&lt;Data&gt; data = dataRepository.findById(id);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (data.isPresent()) {</span>
+<span class="fc" id="L38">            Data foundData = data.get();</span>
+<span class="fc" id="L39">            foundData.setDeleted(true);</span>
+<span class="fc" id="L40">            List&lt;About&gt; abouts = aboutRepository.findByData(foundData);</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">            if (!abouts.isEmpty()) {</span>
+<span class="fc" id="L42">                abouts.forEach(about -&gt; {</span>
+<span class="fc" id="L43">                    about.setDeleted(true);</span>
+//                    aboutRepository.save(about);
+<span class="fc" id="L45">                });</span>
+<span class="fc" id="L46">                aboutRepository.saveAll(abouts);</span>
+            }
+<span class="fc" id="L48">            dataRepository.save(foundData);</span>
+<span class="fc" id="L49">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.DELETE_USER.getMessage(), &quot;2&quot;, null));</span>
+        } else {
+<span class="fc" id="L51">            System.out.println(Message.DATA_NOT_FOUND.getMessage() + id);</span>
+<span class="fc" id="L52">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    @Transactional
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; edit(DataDTO dataDTO) {
+        try {
+<span class="nc" id="L59">            Optional&lt;Data&gt; returnedData = dataRepository.findByPhone(dataDTO.getPhone());</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (returnedData.isPresent()) {</span>
+<span class="nc" id="L61">                Data data = mappingData.convertExistedDataDTOtoData(dataDTO, returnedData.get());</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if (dataDTO.getAddress() != null) {</span>
+<span class="nc" id="L63">                    About about = mappingData.aboutDTOToData(dataDTO);</span>
+<span class="nc" id="L64">                    about.setData(data);</span>
+<span class="nc" id="L65">                    aboutRepository.save(about);</span>
+                }
+<span class="nc" id="L67">                dataRepository.save(data);</span>
+<span class="nc" id="L68">            } else {</span>
+<span class="nc" id="L69">                Data data = mappingData.convertNewDataDTOtoData(dataDTO);</span>
+<span class="nc" id="L70">                dataRepository.save(data);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if (dataDTO.getAddress() != null) {</span>
+<span class="nc" id="L72">                    About about = mappingData.aboutDTOToData(dataDTO);</span>
+<span class="nc" id="L73">                    about.setData(data);</span>
+<span class="nc" id="L74">                    aboutRepository.save(about);</span>
+                }
+            }
+<span class="nc" id="L77">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.USER_REGISTERED.getMessage(), &quot;20&quot;, dataDTO));</span>
+<span class="nc" id="L78">        } catch (Exception e) {</span>
+<span class="nc" id="L79">            return ResponseEntity.internalServerError().build();</span>
+        }
+    }
+
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; findById(long id) {
+<span class="nc" id="L84">        Optional&lt;Data&gt; optionalData = dataRepository.findById(id);</span>
+<span class="nc" id="L85">        DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);</span>
+        try {
+<span class="nc bnc" id="L87" title="All 2 branches missed.">            if (dataDTO != null) {</span>
+<span class="nc" id="L88">                return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.FIND_USER.getMessage(), &quot;2&quot;, dataDTO));</span>
+            }
+<span class="nc" id="L90">            return ResponseEntity.notFound().build();</span>
+<span class="nc" id="L91">        } catch (Exception e) {</span>
+<span class="nc" id="L92">            return ResponseEntity.internalServerError().build();</span>
+        }
+    }
+
+    @Transactional
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; insert(DataDTO dataDTO) {
+        try {
+<span class="nc" id="L99">            Data data = dataRepository.save(mappingData.convertNewDataDTOtoData(dataDTO));</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">            if (dataDTO.getAddress() != null) {</span>
+<span class="nc" id="L101">                About about = mappingData.aboutDTOToData(dataDTO);</span>
+<span class="nc" id="L102">                about.setData(data);</span>
+<span class="nc" id="L103">                aboutRepository.save(about);</span>
+            }
+<span class="nc" id="L105">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.SUCCESSFUL.getMessage(), &quot;201&quot;, dataDTO));</span>
+<span class="nc" id="L106">        } catch (Exception e) {</span>
+<span class="nc" id="L107">            e.printStackTrace();</span>
+<span class="nc" id="L108">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.USER_ERROR.getMessage(), &quot;400&quot;, null));</span>
+        }
+    }
+
+    @Transactional
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; update(DataDTO dataDTO) {
+        try {
+<span class="nc" id="L115">            Optional&lt;Data&gt; returnedData = dataRepository.findByPhone(dataDTO.getPhone());</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            if (returnedData.isPresent()) {</span>
+<span class="nc" id="L117">                Data data = mappingData.convertExistedDataDTOtoData(dataDTO, returnedData.get());</span>
+<span class="nc" id="L118">                data = dataRepository.save(data);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">                if (dataDTO.getAddress() != null) {</span>
+<span class="nc" id="L120">                    About about = mappingData.aboutDTOToData(dataDTO);</span>
+<span class="nc" id="L121">                    about.setData(data);</span>
+<span class="nc" id="L122">                    aboutRepository.save(about);</span>
+                }
+<span class="nc" id="L124">                dataDTO = mappingData.dataToDataDTO(data);</span>
+<span class="nc" id="L125">                return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.SUCCESSFUL.getMessage(), &quot;20&quot;, dataDTO));</span>
+            } else {
+<span class="nc" id="L127">                return ResponseEntity.notFound().build();</span>
+            }
+<span class="nc" id="L129">        } catch (Exception e) {</span>
+<span class="nc" id="L130">            return ResponseEntity.internalServerError().build();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

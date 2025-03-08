@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MappingData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Crud</a> &gt; <a href="index.source.html" class="el_package">org.bayat.crud.service.mapper</a> &gt; <span class="el_source">MappingData.java</span></div><h1>MappingData.java</h1><pre class="source lang-java linenums">package org.bayat.crud.service.mapper;
+
+
+import org.bayat.crud.model.dto.DataDTO;
+import org.bayat.crud.model.entity.About;
+import org.bayat.crud.model.entity.Data;
+import org.springframework.stereotype.Component;
+
+@Component
+<span class="fc" id="L10">public class MappingData {</span>
+
+    //Data to Dto
+    public DataDTO dataToDataDTO(Data data) {
+<span class="fc" id="L14">        DataDTO dataDTO = new DataDTO();</span>
+<span class="fc" id="L15">        dataDTO.setName(data.getName());</span>
+<span class="fc" id="L16">        dataDTO.setPhone(data.getPhone());</span>
+<span class="fc" id="L17">        return dataDTO;</span>
+    }
+
+    //Dto to Data
+    public Data convertNewDataDTOtoData(DataDTO dataDTO) {
+<span class="fc" id="L22">        Data data = new Data();</span>
+<span class="fc" id="L23">        data.setPhone(dataDTO.getPhone());</span>
+<span class="fc" id="L24">        data.setName(dataDTO.getName());</span>
+<span class="fc" id="L25">        return data;</span>
+    }
+
+    public Data convertExistedDataDTOtoData(DataDTO dataDTO, Data data) {
+<span class="fc" id="L29">        data.setName(dataDTO.getName());</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (dataDTO.getNewPhoneNumber() != null) {</span>
+<span class="fc" id="L31">            data.setPhone(dataDTO.getNewPhoneNumber());</span>
+        }
+<span class="fc" id="L33">        return data;</span>
+    }
+
+    //Dto to About
+    public About aboutDTOToData(DataDTO aboutDTO) {
+<span class="fc" id="L38">        About about = new About();</span>
+<span class="fc" id="L39">        about.setAddress(aboutDTO.getAddress());</span>
+<span class="fc" id="L40">        return about;</span>
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
