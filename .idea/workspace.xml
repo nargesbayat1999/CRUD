@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="junit test v1">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/GlobalControllerExceptionHandlerTest.java" afterDir="false" />
+    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Junit v2">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/GlobalControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/controller/GlobalControllerExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/mapper/MappingData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/CrudApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/controller/DataControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +75,9 @@
     "Application.CrudApplication.executor": "Run",
     "Application.MainSample.executor": "Run",
     "JUnit.CrudServiceImplDataTest.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_DataNotFound.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_Successful.executor": "Run",
     "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.testGetData_NoData.executor": "Run",
     "JUnit.GlobalControllerExceptionHandlerTest.testHandle.executor": "Run",
@@ -100,6 +99,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.CrudApplication (1).executor": "Run",
     "Spring Boot.CrudApplication.executor": "Debug",
     "full.screen.before.presentation.mode": "false",
@@ -145,7 +145,7 @@
       <recent name="org.bayat.crud.model.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest">
+  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown">
     <configuration name="CrudServiceImplDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
@@ -161,64 +161,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MappingDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testDelete_DataFoundAndDeletedSuccessfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -XX:+EnableDynamicAgentLoading  " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MappingDataTest.convertExistedDataDTOtoData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testDelete_DataNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
-      <option name="METHOD_NAME" value="convertExistedDataDTOtoData" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testDelete_DataNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MappingDataTest.convertNewDataDTOtoDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testDelete_ExceptionThrown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
-      <option name="METHOD_NAME" value="convertNewDataDTOtoDataTest" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testDelete_ExceptionThrown" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MappingDataTest.dataToDataDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testDelete_Successful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.mapper.*" />
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.mapper" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.mapper.MappingDataTest" />
-      <option name="METHOD_NAME" value="dataToDataDTOTest" />
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testDelete_Successful" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -233,13 +235,28 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <configuration name="CrudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Crud" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.bayat.crud.CrudApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataNotFound" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_Successful" />
+      <item itemvalue="Spring Boot.CrudApplication" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" />
         <item itemvalue="JUnit.CrudServiceImplDataTest" />
-        <item itemvalue="JUnit.MappingDataTest" />
-        <item itemvalue="JUnit.MappingDataTest.convertExistedDataDTOtoData" />
-        <item itemvalue="JUnit.MappingDataTest.convertNewDataDTOtoDataTest" />
-        <item itemvalue="JUnit.MappingDataTest.dataToDataDTOTest" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataNotFound" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_Successful" />
       </list>
     </recent_temporary>
   </component>
@@ -291,7 +308,8 @@
       <workItem from="1740984852517" duration="55000" />
       <workItem from="1740984949817" duration="64000" />
       <workItem from="1740985200002" duration="25918000" />
-      <workItem from="1741088612268" duration="17179000" />
+      <workItem from="1741088612268" duration="24343000" />
+      <workItem from="1741431179884" duration="6634000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -469,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741003781747</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Junit v1">
+      <option name="closed" value="true" />
+      <created>1741164935902</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1741164935902</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +558,9 @@
     <MESSAGE value="git ignore" />
     <MESSAGE value="About and Data relation" />
     <MESSAGE value="junit test v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="junit test v1" />
+    <MESSAGE value="Junit v1" />
+    <MESSAGE value="Junit v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Junit v2" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
