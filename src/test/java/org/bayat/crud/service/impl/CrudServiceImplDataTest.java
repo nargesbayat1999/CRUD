@@ -7,14 +7,20 @@ import org.bayat.crud.model.entity.Data;
 import org.bayat.crud.model.enums.Message;
 import org.bayat.crud.model.repository.AboutRepository;
 import org.bayat.crud.model.repository.DataRepository;
+import org.bayat.crud.service.mapper.MappingData;
+import org.hibernate.annotations.NotFound;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,12 +35,15 @@ class CrudServiceImplDataTest {
 
     @Mock
     private AboutRepository aboutRepository;
+    @Mock
+    MappingData mappingData;
 
     @InjectMocks
     private CrudServiceImplData crudService;
 
     private Data data;
     private About about;
+    private DataDTO dataDTO;
 
     @BeforeEach
     void setUp() {
@@ -46,6 +55,12 @@ class CrudServiceImplDataTest {
         about.setId(1L);
         about.setDeleted(false);
         about.setData(data);
+
+        dataDTO = new DataDTO();
+        dataDTO.setNewPhoneNumber("45454545");
+        dataDTO.setName("Test");
+        dataDTO.setAddress("دلاوران");
+        dataDTO.setPhone("123");
     }
 
     @Test
@@ -79,9 +94,9 @@ class CrudServiceImplDataTest {
     void testDelete_DataNotFound() {
         // Arrange
         when(dataRepository.findById(1L)).thenReturn(Optional.empty());
-
         // Act
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.delete(1L);
+
 
         // Assert
         assertNotNull(response);
@@ -93,6 +108,34 @@ class CrudServiceImplDataTest {
         verify(dataRepository, never()).save(any());
         verify(aboutRepository, never()).saveAll(any());
     }
+
+
+    @Test
+    void testDelete_aboutNotFound() {
+//        // Arrange
+        Data data = new Data();
+        data.setId(1L);
+        data.setDeleted(false);
+
+        when(dataRepository.findById(1L)).thenReturn(Optional.of(data)); // داده پیدا شد
+        when(aboutRepository.findByData(data)).thenReturn(Collections.emptyList()); // لیست abouts خالی است
+
+        // Act
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.delete(1L);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals("2", response.getBody().getErrorCode());
+        assertNull(response.getBody().getData());
+
+        // Verify interactions
+        verify(dataRepository, times(1)).findById(1L); // findById فراخوانی شده است
+        verify(aboutRepository, times(1)).findByData(data); // findByData فراخوانی شده است
+        verify(dataRepository, times(1)).save(data); // data ذخیره شده است
+        verify(aboutRepository, never()).saveAll(any()); // saveAll فراخوانی نشده است
+    }
+
+
     @Test
     void testDelete_ExceptionThrown() {
         // Arrange
@@ -107,4 +150,58 @@ class CrudServiceImplDataTest {
         verify(dataRepository, never()).save(any());
         verify(aboutRepository, never()).saveAll(any());
     }
-}
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void testEdit_DataFoundAndEditSuccessfully(boolean isAddressNull) {
+        when(dataRepository.findByPhone("123")).thenReturn(Optional.of(data));
+        when(mappingData.convertExistedDataDTOtoData(dataDTO, data)).thenReturn(data);
+        lenient().when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
+        if (isAddressNull) {
+            dataDTO.setAddress(null);
+        }
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.edit(dataDTO);
+
+        assertNotNull(response);
+        assertTrue(response.getStatusCode().is2xxSuccessful());
+        if (isAddressNull){
+            verify(aboutRepository, never()).save(about);
+        }else {
+            verify(aboutRepository, times(1)).save(about);
+        }
+
+    }
+
+    @Test
+    void testEdit_DataNotFound() {
+        // Arrange
+        when(dataRepository.findByPhone("123")).thenReturn(Optional.empty()); // شبیه‌سازی عدم وجود داده
+        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+
+        // Act
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.edit(dataDTO);
+
+        // Assert
+        assertNotNull(response); // بررسی null نبودن پاسخ
+
+//        assertEquals("20", response.getBody().getErrorCode()); // بررسی کد خطا
+//        assertEquals(Message.USER_REGISTERED.getMessage(), response.getBody().getMessage()); // بررسی پیام
+//        assertNotNull(response.getBody().getData()); // بررسی null نبودن داده بازگشتی
+
+        // بررسی فراخوانی متدهای مورد انتظار
+        verify(dataRepository, times(1)).findByPhone("123");
+        verify(dataRepository, times(1)).save(data);
+        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+    }
+
+
+
+
+
+
+
+
+    }
+
+
+

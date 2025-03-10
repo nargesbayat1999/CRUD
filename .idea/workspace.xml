@@ -4,10 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Junit v2">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Junit v3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/service/impl/CrudServiceImplDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/service/impl/CrudServiceImplDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/MappingData.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/MappingData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/MappingData.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/MappingData.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.mapper/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-11-28_304.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-12-10_274.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-13-07_328.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-13-38_391.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-14-05_079.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-16-20_565.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-24-05_157.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-29-08_044.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-31-33_049.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-51-02_401.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-05T09-57-29_107.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-08T15-38-44_674.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-08T15-54-49_366.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-08T16-54-44_752.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-08T16-55-01_277.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-03-08T16-56-21_488.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.DataControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.DataControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.impl.CrudServiceImplDataTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.impl.CrudServiceImplDataTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.mapper.MappingDataTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.mapper.MappingDataTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.DataControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.DataControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.impl.CrudServiceImplDataTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.impl.CrudServiceImplDataTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.mapper.MappingDataTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.mapper.MappingDataTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/bayat/crud/service/impl/CrudServiceImplDataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/bayat/crud/service/impl/CrudServiceImplDataTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +112,21 @@
     "Application.B.executor": "Run",
     "Application.CrudApplication.executor": "Run",
     "Application.MainSample.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.TestEdit_DataFoundAndEditSuccessfully.executor": "Run",
     "JUnit.CrudServiceImplDataTest.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully (1).executor": "Run",
     "JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully.executor": "Run",
     "JUnit.CrudServiceImplDataTest.testDelete_DataNotFound.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown.executor": "Run",
     "JUnit.CrudServiceImplDataTest.testDelete_Successful.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testDelete_aboutNotFound.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully (1).executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully_AddressNull.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testEdit_DataNotFound.executor": "Debug",
     "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.testGetData_NoData.executor": "Run",
+    "JUnit.GlobalControllerExceptionHandlerTest.executor": "Run",
     "JUnit.GlobalControllerExceptionHandlerTest.testHandle.executor": "Run",
     "JUnit.MappingDataTest.convertExistedDataDTOtoData.executor": "Run",
     "JUnit.MappingDataTest.convertNewDataDTOtoDataTest.executor": "Run",
@@ -106,13 +153,13 @@
     "git-widget-placeholder": "Junit",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "D:/projects/Crud/src/test/java/org/bayat/crud/service",
-    "last_opened_file_path": "D:/projects/Crud/pom.xml",
+    "last_opened_file_path": "D:/projects/project/pom.xml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -145,8 +192,8 @@
       <recent name="org.bayat.crud.model.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown">
-    <configuration name="CrudServiceImplDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest.testEdit_DataNotFound">
+    <configuration name="CrudServiceImplDataTest.TestEdit_DataFoundAndEditSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
@@ -156,45 +203,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
       <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Crud" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testDelete_DataFoundAndDeletedSuccessfully" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -XX:+EnableDynamicAgentLoading  " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CrudServiceImplDataTest.testDelete_DataNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Crud" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testDelete_DataNotFound" />
+      <option name="METHOD_NAME" value="TestEdit_DataFoundAndEditSuccessfully" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CrudServiceImplDataTest.testDelete_ExceptionThrown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
@@ -204,13 +219,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
       <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testDelete_ExceptionThrown" />
+      <option name="METHOD_NAME" value="testEdit_DataFoundAndEditSuccessfully(boolean)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CrudServiceImplDataTest.testDelete_Successful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
@@ -220,7 +235,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
       <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testDelete_Successful" />
+      <option name="METHOD_NAME" value="testEdit_DataFoundAndEditSuccessfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully_AddressNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testEdit_DataFoundAndEditSuccessfully_AddressNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CrudServiceImplDataTest.testEdit_DataNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testEdit_DataNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -243,20 +290,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown" />
-      <item itemvalue="JUnit.CrudServiceImplDataTest" />
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" />
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataNotFound" />
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_Successful" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully (1)" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully_AddressNull" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataNotFound" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.TestEdit_DataFoundAndEditSuccessfully" />
       <item itemvalue="Spring Boot.CrudApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_ExceptionThrown" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataFoundAndDeletedSuccessfully" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_DataNotFound" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testDelete_Successful" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataNotFound" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully (1)" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully_AddressNull" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testEdit_DataFoundAndEditSuccessfully" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.TestEdit_DataFoundAndEditSuccessfully" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +356,7 @@
       <workItem from="1740984949817" duration="64000" />
       <workItem from="1740985200002" duration="25918000" />
       <workItem from="1741088612268" duration="24343000" />
-      <workItem from="1741431179884" duration="6634000" />
+      <workItem from="1741431179884" duration="47413000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -495,7 +542,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741164935902</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Junit v3">
+      <option name="closed" value="true" />
+      <created>1741440448559</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1741440448559</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Junit v3">
+      <option name="closed" value="true" />
+      <created>1741440475577</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1741440475577</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,8 +623,20 @@
     <MESSAGE value="junit test v1" />
     <MESSAGE value="Junit v1" />
     <MESSAGE value="Junit v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Junit v2" />
+    <MESSAGE value="Junit v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Junit v3" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/bayat/crud/service/impl/CrudServiceImplDataTest.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

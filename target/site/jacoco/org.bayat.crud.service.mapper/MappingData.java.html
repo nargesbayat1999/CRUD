@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 
     public Data convertExistedDataDTOtoData(DataDTO dataDTO, Data data) {
 <span class="fc" id="L29">        data.setName(dataDTO.getName());</span>
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (dataDTO.getNewPhoneNumber() != null) {</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (dataDTO.getNewPhoneNumber() != null) {</span>
 <span class="fc" id="L31">            data.setPhone(dataDTO.getNewPhoneNumber());</span>
         }
 <span class="fc" id="L33">        return data;</span>

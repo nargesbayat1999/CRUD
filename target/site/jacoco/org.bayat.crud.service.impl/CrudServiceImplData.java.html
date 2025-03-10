@@ -38,7 +38,7 @@ public class CrudServiceImplData implements CrudService {
 <span class="fc" id="L38">            Data foundData = data.get();</span>
 <span class="fc" id="L39">            foundData.setDeleted(true);</span>
 <span class="fc" id="L40">            List&lt;About&gt; abouts = aboutRepository.findByData(foundData);</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">            if (!abouts.isEmpty()) {</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            if (!abouts.isEmpty()) {</span>
 <span class="fc" id="L42">                abouts.forEach(about -&gt; {</span>
 <span class="fc" id="L43">                    about.setDeleted(true);</span>
 //                    aboutRepository.save(about);
@@ -56,16 +56,16 @@ public class CrudServiceImplData implements CrudService {
     @Transactional
     public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; edit(DataDTO dataDTO) {
         try {
-<span class="nc" id="L59">            Optional&lt;Data&gt; returnedData = dataRepository.findByPhone(dataDTO.getPhone());</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (returnedData.isPresent()) {</span>
-<span class="nc" id="L61">                Data data = mappingData.convertExistedDataDTOtoData(dataDTO, returnedData.get());</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">                if (dataDTO.getAddress() != null) {</span>
-<span class="nc" id="L63">                    About about = mappingData.aboutDTOToData(dataDTO);</span>
-<span class="nc" id="L64">                    about.setData(data);</span>
-<span class="nc" id="L65">                    aboutRepository.save(about);</span>
+<span class="fc" id="L59">            Optional&lt;Data&gt; returnedData = dataRepository.findByPhone(dataDTO.getPhone());</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if (returnedData.isPresent()) {</span>
+<span class="fc" id="L61">                Data data = mappingData.convertExistedDataDTOtoData(dataDTO, returnedData.get());</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                if (dataDTO.getAddress() != null) {</span>
+<span class="fc" id="L63">                    About about = mappingData.aboutDTOToData(dataDTO);</span>
+<span class="fc" id="L64">                    about.setData(data);</span>
+<span class="fc" id="L65">                    aboutRepository.save(about);</span>
                 }
-<span class="nc" id="L67">                dataRepository.save(data);</span>
-<span class="nc" id="L68">            } else {</span>
+<span class="fc" id="L67">                dataRepository.save(data);</span>
+<span class="fc" id="L68">            } else {</span>
 <span class="nc" id="L69">                Data data = mappingData.convertNewDataDTOtoData(dataDTO);</span>
 <span class="nc" id="L70">                dataRepository.save(data);</span>
 <span class="nc bnc" id="L71" title="All 2 branches missed.">                if (dataDTO.getAddress() != null) {</span>
@@ -74,7 +74,7 @@ public class CrudServiceImplData implements CrudService {
 <span class="nc" id="L74">                    aboutRepository.save(about);</span>
                 }
             }
-<span class="nc" id="L77">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.USER_REGISTERED.getMessage(), &quot;20&quot;, dataDTO));</span>
+<span class="fc" id="L77">            return ResponseEntity.ok(new GenericResponse&lt;&gt;(Message.USER_REGISTERED.getMessage(), &quot;20&quot;, dataDTO));</span>
 <span class="nc" id="L78">        } catch (Exception e) {</span>
 <span class="nc" id="L79">            return ResponseEntity.internalServerError().build();</span>
         }

@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Crud,org.bayat.crud.service.mapper,MappingData,0,54,0,2,0,16,0,6,0,5
+Crud,org.bayat.crud.service.mapper,MappingData,0,54,1,1,0,16,1,5,0,5
 Crud,org.bayat.crud.controller,GlobalControllerExceptionHandler,0,17,0,0,0,3,0,3,0,3
 Crud,org.bayat.crud.controller,DataController,0,104,0,0,0,29,0,7,0,7
-Crud,org.bayat.crud.service.impl,CrudServiceImplData,220,73,15,3,47,19,12,4,4,3
+Crud,org.bayat.crud.service.impl,CrudServiceImplData,172,121,11,7,37,29,9,7,3,4
 Crud,org.bayat.crud,CrudApplication,8,0,0,0,3,0,2,0,2,0
