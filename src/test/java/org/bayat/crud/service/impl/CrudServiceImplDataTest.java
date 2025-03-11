@@ -8,7 +8,6 @@ import org.bayat.crud.model.enums.Message;
 import org.bayat.crud.model.repository.AboutRepository;
 import org.bayat.crud.model.repository.DataRepository;
 import org.bayat.crud.service.mapper.MappingData;
-import org.hibernate.annotations.NotFound;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +16,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
@@ -193,12 +191,6 @@ class CrudServiceImplDataTest {
         verify(dataRepository, times(1)).save(data);
         verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
     }
-
-
-
-
-
-
 
 
     }
