@@ -9,6 +9,7 @@ import org.bayat.crud.model.repository.AboutRepository;
 import org.bayat.crud.model.repository.DataRepository;
 import org.bayat.crud.service.mapper.MappingData;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,6 +17,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
@@ -34,7 +36,7 @@ class CrudServiceImplDataTest {
     @Mock
     private AboutRepository aboutRepository;
     @Mock
-    MappingData mappingData;
+    private MappingData mappingData;
 
     @InjectMocks
     private CrudServiceImplData crudService;
@@ -162,38 +164,81 @@ class CrudServiceImplDataTest {
 
         assertNotNull(response);
         assertTrue(response.getStatusCode().is2xxSuccessful());
-        if (isAddressNull){
+        if (isAddressNull) {
             verify(aboutRepository, never()).save(about);
-        }else {
+        } else {
             verify(aboutRepository, times(1)).save(about);
         }
 
     }
 
     @Test
-    void testEdit_DataNotFound() {
+    void testEdit_ExceptionThrown() {
         // Arrange
-        when(dataRepository.findByPhone("123")).thenReturn(Optional.empty()); // شبیه‌سازی عدم وجود داده
-        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+        when(dataRepository.findByPhone("123")).thenThrow(RuntimeException.class);
 
         // Act
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.edit(dataDTO);
 
         // Assert
-        assertNotNull(response); // بررسی null نبودن پاسخ
+        assertNotNull(response);
+        assertTrue(response.getStatusCode().is5xxServerError());
 
-//        assertEquals("20", response.getBody().getErrorCode()); // بررسی کد خطا
-//        assertEquals(Message.USER_REGISTERED.getMessage(), response.getBody().getMessage()); // بررسی پیام
-//        assertNotNull(response.getBody().getData()); // بررسی null نبودن داده بازگشتی
-
-        // بررسی فراخوانی متدهای مورد انتظار
         verify(dataRepository, times(1)).findByPhone("123");
-        verify(dataRepository, times(1)).save(data);
-        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+
     }
+    @Test
+    void testEdit_DataNotFound()  {
+        when(dataRepository.findByPhone("123")).thenReturn(Optional.empty());
+        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+        when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
+
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.edit(dataDTO);
+        assertNotNull(response);
+        assertTrue(response.getStatusCode().is2xxSuccessful());
+        verify(dataRepository, times(1)).findByPhone("123");
+        verify(aboutRepository, never()).findByData(any());
+        verify(aboutRepository, times(1)).save(any(About.class));
+        verify(dataRepository,times(1)).save(data);
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void testFindById(boolean isFindById){
+        when(dataRepository.findById(1L)).thenReturn(Optional.of(data));
+        if (isFindById) {
+            when(mappingData.dataToDataDTO(data)).thenReturn(dataDTO);
+        }
+        else {
+            when(mappingData.dataToDataDTO(data)).thenReturn(null);
+        }
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.findById(1L);
+        assertNotNull(response);
+        if (isFindById) {
+            assertTrue(response.getStatusCode().is2xxSuccessful());
+        }
+        else {
+            assert(HttpStatus.NOT_FOUND.equals(response.getStatusCode()));
+        }
+        verify(dataRepository, times(1)).findById(1L);
+
+    }
+
+    @Test
+    void testFindById_ExceptionThrown() {
+        when(dataRepository.findById(1L)).thenThrow(new RuntimeException("Database error"));
+        assertThrows(RuntimeException.class, () -> crudService.findById(1L));
+//        assertNotNull(response);
+//        assertTrue(response.getStatusCode().is5xxServerError());
 
 
     }
+
+}
+
+
+
 
 
 

@@ -59,26 +59,19 @@ public class CrudServiceImplData implements CrudService {
             Optional<Data> returnedData = dataRepository.findByPhone(dataDTO.getPhone());
             if (returnedData.isPresent()) {
                 Data data = mappingData.convertExistedDataDTOtoData(dataDTO, returnedData.get());
-                if (dataDTO.getAddress() != null) {
-                    About about = mappingData.aboutDTOToData(dataDTO);
-                    about.setData(data);
-                    aboutRepository.save(about);
-                }
+                updateAddress(dataDTO, data);
                 dataRepository.save(data);
             } else {
                 Data data = mappingData.convertNewDataDTOtoData(dataDTO);
                 dataRepository.save(data);
-                if (dataDTO.getAddress() != null) {
-                    About about = mappingData.aboutDTOToData(dataDTO);
-                    about.setData(data);
-                    aboutRepository.save(about);
-                }
+                updateAddress(dataDTO, data);
             }
             return ResponseEntity.ok(new GenericResponse<>(Message.USER_REGISTERED.getMessage(), "20", dataDTO));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
     }
+
 
     public ResponseEntity<GenericResponse<DataDTO>> findById(long id) {
         Optional<Data> optionalData = dataRepository.findById(id);
@@ -87,7 +80,9 @@ public class CrudServiceImplData implements CrudService {
             if (dataDTO != null) {
                 return ResponseEntity.ok(new GenericResponse<>(Message.FIND_USER.getMessage(), "2", dataDTO));
             }
-            return ResponseEntity.notFound().build();
+            else {
+                return ResponseEntity.notFound().build();
+            }
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
@@ -130,4 +125,12 @@ public class CrudServiceImplData implements CrudService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    private void updateAddress(DataDTO dataDTO , Data data){
+        if (dataDTO.getAddress() != null) {
+            About about = mappingData.aboutDTOToData(dataDTO);
+            about.setData(data);
+            aboutRepository.save(about);
+        }
+    }
+
 }
