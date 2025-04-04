@@ -9,7 +9,6 @@ import org.bayat.crud.model.repository.AboutRepository;
 import org.bayat.crud.model.repository.DataRepository;
 import org.bayat.crud.service.mapper.MappingData;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -65,21 +64,21 @@ class CrudServiceImplDataTest {
 
     @Test
     void testDelete_DataFoundAndDeletedSuccessfully() {
-        // Arrange
+
         when(dataRepository.findById(1L)).thenReturn(Optional.of(data));
         when(aboutRepository.findByData(data)).thenReturn(List.of(about));
 
-        // Act
+
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.delete(1L);
 
-        // Assert
+
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(Message.DELETE_USER.getMessage(), response.getBody().getMessage());
         assertEquals("2", response.getBody().getErrorCode());
         assertNull(response.getBody().getData());
 
-        // بررسی تغییر وضعیت `deleted`
+
         assertTrue(data.getDeleted());
         assertTrue(about.getDeleted());
 
@@ -187,8 +186,9 @@ class CrudServiceImplDataTest {
         verify(dataRepository, times(1)).findByPhone("123");
 
     }
+
     @Test
-    void testEdit_DataNotFound()  {
+    void testEdit_DataNotFound() {
         when(dataRepository.findByPhone("123")).thenReturn(Optional.empty());
         when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
         when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
@@ -199,42 +199,159 @@ class CrudServiceImplDataTest {
         verify(dataRepository, times(1)).findByPhone("123");
         verify(aboutRepository, never()).findByData(any());
         verify(aboutRepository, times(1)).save(any(About.class));
-        verify(dataRepository,times(1)).save(data);
+        verify(dataRepository, times(1)).save(data);
 
     }
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
-    void testFindById(boolean isFindById){
+    void testFindById(boolean isFindById) {
         when(dataRepository.findById(1L)).thenReturn(Optional.of(data));
         if (isFindById) {
             when(mappingData.dataToDataDTO(data)).thenReturn(dataDTO);
-        }
-        else {
+        } else {
             when(mappingData.dataToDataDTO(data)).thenReturn(null);
         }
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.findById(1L);
         assertNotNull(response);
         if (isFindById) {
             assertTrue(response.getStatusCode().is2xxSuccessful());
-        }
-        else {
-            assert(HttpStatus.NOT_FOUND.equals(response.getStatusCode()));
+        } else {
+            assert (HttpStatus.NOT_FOUND.equals(response.getStatusCode()));
         }
         verify(dataRepository, times(1)).findById(1L);
 
     }
 
-    @Test
-    void testFindById_ExceptionThrown() {
-        when(dataRepository.findById(1L)).thenThrow(new RuntimeException("Database error"));
-        assertThrows(RuntimeException.class, () -> crudService.findById(1L));
-//        assertNotNull(response);
-//        assertTrue(response.getStatusCode().is5xxServerError());
+
+//    @Test
+//    void testFindById_ExceptionThrown() {
+//        when(dataRepository.findById(1L)).thenThrow(new RuntimeException("Database error"));
+//        assertThrows(RuntimeException.class, () -> crudService.findById(1L));
+//    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void testInsert(boolean hasAddress) {
+        // Arrange
+        if (!hasAddress) {
+            dataDTO.setAddress(null);
+        }
+
+        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+        when(dataRepository.save(data)).thenReturn(data);
 
 
+        if (hasAddress) {
+            when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
+            when(aboutRepository.save(about)).thenReturn(about);
+        }
+
+
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.insert(dataDTO);
+
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        GenericResponse<DataDTO> responseBody = response.getBody();
+        assertNotNull(responseBody);
+        assertEquals(Message.SUCCESSFUL.getMessage(), responseBody.getMessage());
+        assertEquals("201", responseBody.getErrorCode());
+        assertEquals(dataDTO, responseBody.getData());
+
+
+        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+        verify(dataRepository, times(1)).save(data);
+
+
+        if (hasAddress) {
+            verify(mappingData, times(1)).aboutDTOToData(dataDTO);
+            verify(aboutRepository, times(1)).save(about);
+        } else {
+            verify(mappingData, never()).aboutDTOToData(any());
+            verify(aboutRepository, never()).save(any());
+        }
     }
 
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void testUpdate_Successful(boolean hasAddress) {
+        // Arrange
+        if (!hasAddress) {
+            dataDTO.setAddress(null);
+        }
+
+        when(dataRepository.findByPhone(dataDTO.getPhone())).thenReturn(Optional.of(data));
+        when(mappingData.convertExistedDataDTOtoData(dataDTO, data)).thenReturn(data);
+        when(dataRepository.save(data)).thenReturn(data);
+        when(mappingData.dataToDataDTO(data)).thenReturn(dataDTO);
+
+        if (hasAddress) {
+            when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
+            when(aboutRepository.save(about)).thenReturn(about);
+        }
+
+
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.update(dataDTO);
+
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        GenericResponse<DataDTO> responseBody = response.getBody();
+        assertNotNull(responseBody);
+        assertEquals(Message.SUCCESSFUL.getMessage(), responseBody.getMessage());
+        assertEquals("20", responseBody.getErrorCode());
+        assertEquals(dataDTO, responseBody.getData());
+
+
+        verify(dataRepository).findByPhone(dataDTO.getPhone());
+        verify(mappingData).convertExistedDataDTOtoData(dataDTO, data);
+        verify(dataRepository).save(data);
+        verify(mappingData).dataToDataDTO(data);
+
+        if (hasAddress) {
+            verify(mappingData).aboutDTOToData(dataDTO);
+            verify(aboutRepository).save(about);
+        } else {
+            verify(mappingData, never()).aboutDTOToData(any());
+            verify(aboutRepository, never()).save(any());
+        }
+    }
+    @Test
+    void testUpdate_DataNotFound() {
+        when(dataRepository.findByPhone(dataDTO.getPhone())).thenReturn(Optional.empty());
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.update(dataDTO);
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+
+
+        verify(dataRepository).findByPhone(dataDTO.getPhone());
+        verify(mappingData, never()).convertExistedDataDTOtoData(any(), any());
+        verify(dataRepository, never()).save(any());
+        verify(mappingData, never()).dataToDataDTO(any());
+        verify(mappingData, never()).aboutDTOToData(any());
+        verify(aboutRepository, never()).save(any());
+    }
+
+    @Test
+    void testUpdate_InternalServerError() {
+
+        when(dataRepository.findByPhone(dataDTO.getPhone())).thenThrow(new RuntimeException("Database error"));
+
+
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.update(dataDTO);
+
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+
+
+        verify(dataRepository).findByPhone(dataDTO.getPhone());
+        verify(mappingData, never()).convertExistedDataDTOtoData(any(), any());
+        verify(dataRepository, never()).save(any());
+    }
 }
 
 

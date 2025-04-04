@@ -1,0 +1,13 @@
+org\bayat\crud\model\repository\AboutRepository.class
+org\bayat\crud\controller\GlobalControllerExceptionHandler.class
+org\bayat\crud\model\entity\About.class
+org\bayat\crud\model\GenericResponse.class
+org\bayat\crud\model\entity\Data.class
+org\bayat\crud\service\impl\CrudServiceImplData.class
+org\bayat\crud\controller\DataController.class
+org\bayat\crud\CrudApplication.class
+org\bayat\crud\service\CrudService.class
+org\bayat\crud\model\enums\Message.class
+org\bayat\crud\model\repository\DataRepository.class
+org\bayat\crud\model\dto\DataDTO.class
+org\bayat\crud\service\mapper\MappingData.class

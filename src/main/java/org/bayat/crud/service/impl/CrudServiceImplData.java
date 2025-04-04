@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLDataException;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class CrudServiceImplData implements CrudService {
         this.aboutRepository = aboutRepository;
     }
 
-    @Transactional
+
     public ResponseEntity<GenericResponse<DataDTO>> delete(long id) {
         Optional<Data> data = dataRepository.findById(id);
         if (data.isPresent()) {
@@ -41,7 +42,7 @@ public class CrudServiceImplData implements CrudService {
             if (!abouts.isEmpty()) {
                 abouts.forEach(about -> {
                     about.setDeleted(true);
-//                    aboutRepository.save(about);
+
                 });
                 aboutRepository.saveAll(abouts);
             }
@@ -53,7 +54,7 @@ public class CrudServiceImplData implements CrudService {
         }
     }
 
-    @Transactional
+
     public ResponseEntity<GenericResponse<DataDTO>> edit(DataDTO dataDTO) {
         try {
             Optional<Data> returnedData = dataRepository.findByPhone(dataDTO.getPhone());
@@ -74,6 +75,7 @@ public class CrudServiceImplData implements CrudService {
 
 
     public ResponseEntity<GenericResponse<DataDTO>> findById(long id) {
+
         Optional<Data> optionalData = dataRepository.findById(id);
         DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);
         try {
@@ -88,7 +90,7 @@ public class CrudServiceImplData implements CrudService {
         }
     }
 
-    @Transactional
+
     public ResponseEntity<GenericResponse<DataDTO>> insert(DataDTO dataDTO) {
         try {
             Data data = dataRepository.save(mappingData.convertNewDataDTOtoData(dataDTO));
@@ -104,7 +106,7 @@ public class CrudServiceImplData implements CrudService {
         }
     }
 
-    @Transactional
+
     public ResponseEntity<GenericResponse<DataDTO>> update(DataDTO dataDTO) {
         try {
             Optional<Data> returnedData = dataRepository.findByPhone(dataDTO.getPhone());
