@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfc0d53a-0d9e-4dad-bdf8-4c569eecc6e2" name="Changes" comment="Junit updateAddress">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImplData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bayat/crud/service/impl/CrudServiceImplData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/bayat/crud/service/impl/CrudServiceImplDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/bayat/crud/service/impl/CrudServiceImplDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImplData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/bayat/crud/service/impl/CrudServiceImplData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/CrudServiceImplData.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.bayat.crud.service.impl/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.DataControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.DataControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.impl.CrudServiceImplDataTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.impl.CrudServiceImplDataTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.mapper.MappingDataTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.bayat.crud.service.mapper.MappingDataTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.DataControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.DataControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.controller.GlobalControllerExceptionHandlerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.impl.CrudServiceImplDataTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.bayat.crud.service.impl.CrudServiceImplDataTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/bayat/crud/service/impl/CrudServiceImplDataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/bayat/crud/service/impl/CrudServiceImplDataTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +99,7 @@
     "JUnit.CrudServiceImplDataTest.testEdit_DataNotFound.executor": "Debug",
     "JUnit.CrudServiceImplDataTest.testFindById (1).executor": "Run",
     "JUnit.CrudServiceImplDataTest.testFindById.executor": "Run",
+    "JUnit.CrudServiceImplDataTest.testFindById_ExceptionHandled.executor": "Run",
     "JUnit.CrudServiceImplDataTest.testFindById_ExceptionThrown.executor": "Run",
     "JUnit.CrudServiceImplDataTest.testInsert (1).executor": "Run",
     "JUnit.CrudServiceImplDataTest.testInsert.executor": "Run",
@@ -160,7 +177,23 @@
       <recent name="org.bayat.crud.model.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest.testUpdate_DataNotFound">
+  <component name="RunManager" selected="JUnit.CrudServiceImplDataTest.testInsert_Exception">
+    <configuration name="CrudServiceImplDataTest.testFindById_ExceptionHandled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Crud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
+      <option name="METHOD_NAME" value="testFindById_ExceptionHandled" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CrudServiceImplDataTest.testFindById_ExceptionThrown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
@@ -193,7 +226,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CrudServiceImplDataTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CrudServiceImplDataTest.testInsert_Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Crud" />
       <extension name="coverage">
         <pattern>
@@ -203,7 +236,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
       <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testInsert" />
+      <option name="METHOD_NAME" value="testInsert_Exception" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -220,22 +253,6 @@
       <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
       <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
       <option name="METHOD_NAME" value="testUpdate_DataNotFound" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CrudServiceImplDataTest.testUpdate_Successful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Crud" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.bayat.crud.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.bayat.crud.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="org.bayat.crud.service.impl.CrudServiceImplDataTest" />
-      <option name="METHOD_NAME" value="testUpdate_Successful(boolean)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -258,20 +275,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testFindById_ExceptionHandled" />
       <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert (1)" />
+      <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert_Exception" />
       <item itemvalue="JUnit.CrudServiceImplDataTest.testUpdate_DataNotFound" />
-      <item itemvalue="JUnit.CrudServiceImplDataTest.testUpdate_Successful" />
       <item itemvalue="JUnit.CrudServiceImplDataTest.testFindById_ExceptionThrown" />
       <item itemvalue="Spring Boot.CrudApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testUpdate_DataNotFound" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testUpdate_Successful" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert_Exception" />
         <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert (1)" />
-        <item itemvalue="JUnit.CrudServiceImplDataTest.testInsert" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testFindById_ExceptionHandled" />
         <item itemvalue="JUnit.CrudServiceImplDataTest.testFindById_ExceptionThrown" />
+        <item itemvalue="JUnit.CrudServiceImplDataTest.testUpdate_DataNotFound" />
       </list>
     </recent_temporary>
   </component>
@@ -328,7 +345,7 @@
       <workItem from="1741680268555" duration="20236000" />
       <workItem from="1741761836707" duration="17016000" />
       <workItem from="1742831396520" duration="42000" />
-      <workItem from="1743790106777" duration="9286000" />
+      <workItem from="1743790106777" duration="10766000" />
     </task>
     <task id="LOCAL-00001" summary="DTO">
       <option name="closed" value="true" />
@@ -546,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741681926820</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Junit updateAddress">
+      <option name="closed" value="true" />
+      <created>1743800407438</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743800407438</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

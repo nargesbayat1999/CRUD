@@ -223,13 +223,6 @@ class CrudServiceImplDataTest {
 
     }
 
-
-//    @Test
-//    void testFindById_ExceptionThrown() {
-//        when(dataRepository.findById(1L)).thenThrow(new RuntimeException("Database error"));
-//        assertThrows(RuntimeException.class, () -> crudService.findById(1L));
-//    }
-
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
     void testInsert(boolean hasAddress) {
@@ -241,16 +234,16 @@ class CrudServiceImplDataTest {
         when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
         when(dataRepository.save(data)).thenReturn(data);
 
-
+        // فقط وقتی آدرس وجود دارد about را mock کن
         if (hasAddress) {
             when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
             when(aboutRepository.save(about)).thenReturn(about);
         }
 
-
+        // Act
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.insert(dataDTO);
 
-
+        // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -260,11 +253,11 @@ class CrudServiceImplDataTest {
         assertEquals("201", responseBody.getErrorCode());
         assertEquals(dataDTO, responseBody.getData());
 
-
+        // Verify common interactions
         verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
         verify(dataRepository, times(1)).save(data);
 
-
+        // Verify address-related interactions conditionally
         if (hasAddress) {
             verify(mappingData, times(1)).aboutDTOToData(dataDTO);
             verify(aboutRepository, times(1)).save(about);
@@ -273,6 +266,34 @@ class CrudServiceImplDataTest {
             verify(aboutRepository, never()).save(any());
         }
     }
+
+    @Test
+    void testInsert_Exception() {
+        // Arrange
+        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenThrow(new RuntimeException("Conversion error"));
+
+        // Act
+        ResponseEntity<GenericResponse<DataDTO>> response = crudService.insert(dataDTO);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        GenericResponse<DataDTO> responseBody = response.getBody();
+        assertNotNull(responseBody);
+        assertEquals(Message.USER_ERROR.getMessage(), responseBody.getMessage());
+        assertEquals("400", responseBody.getErrorCode());
+        assertNull(responseBody.getData());
+
+        // Verify
+        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+        verify(dataRepository, never()).save(any());
+        verify(mappingData, never()).aboutDTOToData(any());
+        verify(aboutRepository, never()).save(any());
+    }
+
+
+
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
@@ -319,6 +340,7 @@ class CrudServiceImplDataTest {
             verify(aboutRepository, never()).save(any());
         }
     }
+
     @Test
     void testUpdate_DataNotFound() {
         when(dataRepository.findByPhone(dataDTO.getPhone())).thenReturn(Optional.empty());

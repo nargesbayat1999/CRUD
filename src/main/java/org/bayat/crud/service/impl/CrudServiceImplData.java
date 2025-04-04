@@ -75,14 +75,13 @@ public class CrudServiceImplData implements CrudService {
 
 
     public ResponseEntity<GenericResponse<DataDTO>> findById(long id) {
-
-        Optional<Data> optionalData = dataRepository.findById(id);
-        DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);
         try {
+            Optional<Data> optionalData = dataRepository.findById(id);
+            DataDTO dataDTO = optionalData.map(mappingData::dataToDataDTO).orElse(null);
+
             if (dataDTO != null) {
                 return ResponseEntity.ok(new GenericResponse<>(Message.FIND_USER.getMessage(), "2", dataDTO));
-            }
-            else {
+            } else {
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
@@ -127,7 +126,8 @@ public class CrudServiceImplData implements CrudService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    private void updateAddress(DataDTO dataDTO , Data data){
+
+    private void updateAddress(DataDTO dataDTO, Data data) {
         if (dataDTO.getAddress() != null) {
             About about = mappingData.aboutDTOToData(dataDTO);
             about.setData(data);
