@@ -18,7 +18,7 @@ public class MappingData {
     }
 
     //Dto to Data
-    public Data convertNewDataDTOtoData(DataDTO dataDTO) {
+    public Data convertDataDTOtoData(DataDTO dataDTO) {
         Data data = new Data();
         data.setPhone(dataDTO.getPhone());
         data.setName(dataDTO.getName());

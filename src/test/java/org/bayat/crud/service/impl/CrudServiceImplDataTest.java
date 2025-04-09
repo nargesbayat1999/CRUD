@@ -73,8 +73,8 @@ class CrudServiceImplDataTest {
 
 
         assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(Message.DELETE_USER.getMessage(), response.getBody().getMessage());
+        assertEquals(200, response.                 getStatusCodeValue());
+        assertEquals(Message.DELETE_USER.getMessageStatus(), response.getBody().getMessage());
         assertEquals("2", response.getBody().getErrorCode());
         assertNull(response.getBody().getData());
 
@@ -190,7 +190,7 @@ class CrudServiceImplDataTest {
     @Test
     void testEdit_DataNotFound() {
         when(dataRepository.findByPhone("123")).thenReturn(Optional.empty());
-        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+        when(mappingData.convertDataDTOtoData(dataDTO)).thenReturn(data);
         when(mappingData.aboutDTOToData(dataDTO)).thenReturn(about);
 
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.edit(dataDTO);
@@ -231,7 +231,7 @@ class CrudServiceImplDataTest {
             dataDTO.setAddress(null);
         }
 
-        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenReturn(data);
+        when(mappingData.convertDataDTOtoData(dataDTO)).thenReturn(data);
         when(dataRepository.save(data)).thenReturn(data);
 
         // فقط وقتی آدرس وجود دارد about را mock کن
@@ -249,12 +249,12 @@ class CrudServiceImplDataTest {
 
         GenericResponse<DataDTO> responseBody = response.getBody();
         assertNotNull(responseBody);
-        assertEquals(Message.SUCCESSFUL.getMessage(), responseBody.getMessage());
+        assertEquals(Message.SUCCESSFUL.getMessageStatus(), responseBody.getMessage());
         assertEquals("201", responseBody.getErrorCode());
         assertEquals(dataDTO, responseBody.getData());
 
         // Verify common interactions
-        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+        verify(mappingData, times(1)).convertDataDTOtoData(dataDTO);
         verify(dataRepository, times(1)).save(data);
 
         // Verify address-related interactions conditionally
@@ -270,7 +270,7 @@ class CrudServiceImplDataTest {
     @Test
     void testInsert_Exception() {
         // Arrange
-        when(mappingData.convertNewDataDTOtoData(dataDTO)).thenThrow(new RuntimeException("Conversion error"));
+        when(mappingData.convertDataDTOtoData(dataDTO)).thenThrow(new RuntimeException("Conversion error"));
 
         // Act
         ResponseEntity<GenericResponse<DataDTO>> response = crudService.insert(dataDTO);
@@ -281,12 +281,12 @@ class CrudServiceImplDataTest {
 
         GenericResponse<DataDTO> responseBody = response.getBody();
         assertNotNull(responseBody);
-        assertEquals(Message.USER_ERROR.getMessage(), responseBody.getMessage());
+        assertEquals(Message.USER_ERROR.getMessageStatus(), responseBody.getMessage());
         assertEquals("400", responseBody.getErrorCode());
         assertNull(responseBody.getData());
 
         // Verify
-        verify(mappingData, times(1)).convertNewDataDTOtoData(dataDTO);
+        verify(mappingData, times(1)).convertDataDTOtoData(dataDTO);
         verify(dataRepository, never()).save(any());
         verify(mappingData, never()).aboutDTOToData(any());
         verify(aboutRepository, never()).save(any());
@@ -322,7 +322,7 @@ class CrudServiceImplDataTest {
 
         GenericResponse<DataDTO> responseBody = response.getBody();
         assertNotNull(responseBody);
-        assertEquals(Message.SUCCESSFUL.getMessage(), responseBody.getMessage());
+        assertEquals(Message.SUCCESSFUL.getMessageStatus(), responseBody.getMessage());
         assertEquals("20", responseBody.getErrorCode());
         assertEquals(dataDTO, responseBody.getData());
 

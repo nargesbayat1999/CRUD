@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 //@Deprecated
-@RequestMapping("/data/v1")
+@RequestMapping("/API/data/v1")
 @RestController
 @Slf4j
 public class DataController {
@@ -38,14 +38,14 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @GetMapping(value = "/getData",  produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/Data",  produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> getData(@RequestParam(name = "id") long id) {
         try {
-            log.debug(Message.GETDATA_SERVICE_CALL.getMessage());
+            log.debug(Message.GETDATA_SERVICE_CALL.getMessageStatus());
             return crudService.findById(id);
 
         } catch (Exception e) {
-            log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
+            log.error(Message.UNKNOWN_ERROR_IS.getMessageStatus(), e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
     }
@@ -59,14 +59,14 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @PutMapping(value = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/Data", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> edit(@Valid @RequestBody DataDTO dataDTO) {
         try {
-            log.debug(Message.Edit_SERVICE_CALL.getMessage());
+            log.debug(Message.EDIT_SERVICE_CALL.getMessageStatus());
 
             return crudService.edit(dataDTO);
         } catch (Exception e) {
-            log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
+            log.error(Message.UNKNOWN_ERROR_IS.getMessageStatus(), e.getMessage());
             return ResponseEntity.internalServerError().build();
 
         }
@@ -79,13 +79,13 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @DeleteMapping(value = "/delete",  produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/Data",  produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> delete(@RequestParam(name = "id") long id) {
         try {
-            log.debug(Message.DELETED_SERVICE_CALL.getMessage());
+            log.debug(Message.DELETED_SERVICE_CALL.getMessageStatus());
             return crudService.delete(id);
         } catch (Exception e) {
-            log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
+            log.error(Message.UNKNOWN_ERROR_IS.getMessageStatus(), e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
 
@@ -103,15 +103,15 @@ public class DataController {
     @PatchMapping(value = "/editPhone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> update(@Valid@RequestBody DataDTO dataDTO) {
         try {
-            log.debug(Message.EDIT_PHONE_SERVICE_CALL.getMessage());
+            log.debug(Message.EDIT_PHONE_SERVICE_CALL.getMessageStatus());
             return crudService.update(dataDTO);
         } catch (Exception e) {
-            log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e.getMessage());
+            log.error(Message.UNKNOWN_ERROR_IS.getMessageStatus(), e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
     }
 
-    @Operation(summary = "insertdata")
+    @Operation(summary = "insertData")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "insert data",
                     content = {@Content(mediaType = "application/json",
@@ -120,13 +120,13 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/Data", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> insert(@Valid@RequestBody DataDTO dataDTO) {
         try {
-            log.debug(Message.REGISTER_SERVICE_CALL.getMessage());
+            log.debug(Message.REGISTER_SERVICE_CALL.getMessageStatus());
             return crudService.insert(dataDTO);
         } catch (Exception e) {
-            log.error(Message.UNKNOWN_ERROR_IS.getMessage(), e);
+            log.error(Message.UNKNOWN_ERROR_IS.getMessageStatus(), e);
             return ResponseEntity.internalServerError().build();
         }
     }

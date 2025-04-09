@@ -42,8 +42,8 @@ class MappingDataTest {
     }
 
     @Test
-    void convertNewDataDTOtoDataTest() {
-        Data data = mappingData.convertNewDataDTOtoData(dto);
+    void convertDataDTOtoDataTest() {
+        Data data = mappingData.convertDataDTOtoData(dto);
         assertEquals(data.getName(), dto.getName());
         assertEquals(data.getPhone(), dto.getPhone());
 

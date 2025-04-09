@@ -1,36 +1,45 @@
 package org.bayat.crud.controller;
 
+import org.bayat.crud.model.GenericResponse;
+import org.bayat.crud.model.dto.DataDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpServletRequest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class GlobalControllerExceptionHandlerTest {
+class GlobalControllerExceptionHandlerTest {
 
     private GlobalControllerExceptionHandler handler;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         handler = new GlobalControllerExceptionHandler();
     }
 
     @Test
-    public void handleConversionTest() {
-        RuntimeException runtimeException = new ConversionFailedException(null, null, "canvers fail", new ArithmeticException("INVALID"));
+     void handleConversionTest() {
+        RuntimeException runtimeException = new ConversionFailedException(null, null, "fail", new ArithmeticException("INVALID"));
+        MockHttpServletRequest mockRequest = new MockHttpServletRequest();
+        mockRequest.setRequestURI("/test-uri");
 
-        ResponseEntity<String> response = handler.handleConversion(runtimeException);
+
+        ResponseEntity<GenericResponse<DataDTO>> response = handler.handleConversion(runtimeException,mockRequest);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 
     }
     @Test
-    public void handleBookNotFoundTest() {
+     void handleBookNotFoundTest() {
+
         RuntimeException runtimeException = new RuntimeException();
-        ResponseEntity<String> response = handler.handleBookNotFound(runtimeException);
+        MockHttpServletRequest mockRequest = new MockHttpServletRequest();
+        mockRequest.setRequestURI("/test-uri");
+        ResponseEntity<GenericResponse<DataDTO>> response = handler.handleBookNotFound(runtimeException,mockRequest);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 

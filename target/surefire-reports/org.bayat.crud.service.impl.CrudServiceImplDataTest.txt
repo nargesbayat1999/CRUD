@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.bayat.crud.service.impl.CrudServiceImplDataTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.483 s -- in org.bayat.crud.service.impl.CrudServiceImplDataTest
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.244 s -- in org.bayat.crud.service.impl.CrudServiceImplDataTest
