@@ -34,5 +34,16 @@ public class FilterConfig extends GenericFilterBean {
         logger.error("response : " + response);
         return ResponseEntity.notFound().build();
     }
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<GenericResponse<String>> handleException(Exception ex, ContentCachingRequestWrapper request) {
+        String reqBody = new String(request.getContentAsByteArray(), StandardCharsets.UTF_8);
+        GenericResponse<String> response = new GenericResponse<>(ex.getMessage(), Message.UNKNOWN_ERROR_IS.getMessageStatus(), reqBody);
+        logger.error("response : " + response);
+        return ResponseEntity.notFound().build();
+    }
 
 }
+
+
+

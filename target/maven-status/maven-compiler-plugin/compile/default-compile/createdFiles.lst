@@ -11,3 +11,4 @@ org\bayat\crud\model\enums\Message.class
 org\bayat\crud\model\repository\DataRepository.class
 org\bayat\crud\model\dto\DataDTO.class
 org\bayat\crud\service\mapper\MappingData.class
+org\bayat\crud\controller\FilterConfig.class

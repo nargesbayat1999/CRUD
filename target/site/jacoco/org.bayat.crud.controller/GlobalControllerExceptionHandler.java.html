@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalControllerExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Crud</a> &gt; <a href="index.source.html" class="el_package">org.bayat.crud.controller</a> &gt; <span class="el_source">GlobalControllerExceptionHandler.java</span></div><h1>GlobalControllerExceptionHandler.java</h1><pre class="source lang-java linenums">package org.bayat.crud.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.bayat.crud.model.GenericResponse;
+import org.bayat.crud.model.dto.DataDTO;
+import org.bayat.crud.model.enums.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
-    @RestControllerAdvice
-<span class="fc" id="L11">    public class GlobalControllerExceptionHandler {</span>
+import java.nio.charset.StandardCharsets;
 
 
-        @ExceptionHandler(ConversionFailedException.class)
-        @ResponseStatus(HttpStatus.BAD_REQUEST)
-        public ResponseEntity&lt;String&gt; handleConversion(RuntimeException ex) {
-<span class="fc" id="L17">            return new ResponseEntity&lt;&gt;(ex.getMessage(), HttpStatus.BAD_REQUEST);</span>
-        }
+@RestControllerAdvice
+<span class="fc" id="L21">public class GlobalControllerExceptionHandler {</span>
+<span class="fc" id="L22">    private static final Logger logger = LoggerFactory.getLogger(GlobalControllerExceptionHandler.class);</span>
 
-        @ExceptionHandler(RuntimeException.class)
-        @ResponseStatus(HttpStatus.NOT_FOUND)
-        public ResponseEntity&lt;String&gt; handleBookNotFound(RuntimeException ex) {
-<span class="fc" id="L23">            return new ResponseEntity&lt;&gt;(ex.getMessage(), HttpStatus.NOT_FOUND);</span>
-        }
+    @ExceptionHandler(ConversionFailedException.class)
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; handleConversion(RuntimeException ex, HttpServletRequest request) {
+        //  return ResponseEntity.badRequest().body(new GenericResponse&lt;&gt;(ex.getMessage(),Message.USER_ERROR.getMessageStatus(), null));
+<span class="fc" id="L27">        DataDTO requestData = new DataDTO();</span>
+<span class="fc" id="L28">        requestData.setName(request.getRequestURI());</span>
+<span class="fc" id="L29">        GenericResponse&lt;DataDTO&gt; response = new GenericResponse&lt;&gt;(ex.getMessage(), Message.USER_ERROR.getMessageStatus(), requestData);</span>
+<span class="fc" id="L30">        logger.error(&quot;Handling ConversionFailedException - Response: {}&quot;, response);</span>
+<span class="fc" id="L31">        return ResponseEntity.badRequest().body(response);</span>
     }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity&lt;GenericResponse&lt;DataDTO&gt;&gt; handleBookNotFound(RuntimeException ex, HttpServletRequest request) {
+        // return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new GenericResponse&lt;&gt;(ex.getMessage(),Message.DATA_NOT_FOUND.getMessageStatus(), null));
+
+<span class="fc" id="L39">        DataDTO requestData = new DataDTO();</span>
+<span class="fc" id="L40">        requestData.setName(request.getRequestURI());</span>
+
+<span class="fc" id="L42">        GenericResponse&lt;DataDTO&gt; response = new GenericResponse&lt;&gt;(ex.getMessage(), Message.DATA_NOT_FOUND.getMessageStatus(), requestData);</span>
+<span class="fc" id="L43">        logger.error(&quot;Handling ConversionFailedException -Response: {}&quot;, response);</span>
+<span class="fc" id="L44">        return ResponseEntity.notFound().build();</span>
+
+    }
+
+
+
+
+}
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

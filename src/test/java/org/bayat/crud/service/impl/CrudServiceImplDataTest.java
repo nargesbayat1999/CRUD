@@ -73,7 +73,7 @@ class CrudServiceImplDataTest {
 
 
         assertNotNull(response);
-        assertEquals(200, response.                 getStatusCodeValue());
+        assertEquals(200, response.getStatusCodeValue());
         assertEquals(Message.DELETE_USER.getMessageStatus(), response.getBody().getMessage());
         assertEquals("2", response.getBody().getErrorCode());
         assertNull(response.getBody().getData());

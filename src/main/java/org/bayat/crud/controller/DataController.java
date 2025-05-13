@@ -100,7 +100,7 @@ public class DataController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "data not found",
                     content = @Content)})
-    @PatchMapping(value = "/editPhone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/Data", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<DataDTO>> update(@Valid@RequestBody DataDTO dataDTO) {
         try {
             log.debug(Message.EDIT_PHONE_SERVICE_CALL.getMessageStatus());
