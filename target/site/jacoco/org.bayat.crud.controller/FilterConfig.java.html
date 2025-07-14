@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FilterConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Crud</a> &gt; <a href="index.source.html" class="el_package">org.bayat.crud.controller</a> &gt; <span class="el_source">FilterConfig.java</span></div><h1>FilterConfig.java</h1><pre class="source lang-java linenums">package org.bayat.crud.controller;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import org.bayat.crud.model.GenericResponse;
+import org.bayat.crud.model.enums.Message;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.util.ContentCachingRequestWrapper;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+<span class="nc" id="L20">public class FilterConfig extends GenericFilterBean {</span>
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+<span class="nc" id="L24">        HttpServletRequest request = (HttpServletRequest) servletRequest;</span>
+<span class="nc" id="L25">        ContentCachingRequestWrapper wrapper = new ContentCachingRequestWrapper(request);</span>
+<span class="nc" id="L26">        chain.doFilter(wrapper, servletResponse);</span>
+<span class="nc" id="L27">    }</span>
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity&lt;GenericResponse&lt;String&gt;&gt; handleDefaultException(Exception ex, ContentCachingRequestWrapper request) {
+<span class="nc" id="L32">        String reqBody = new String(request.getContentAsByteArray(), StandardCharsets.UTF_8);</span>
+<span class="nc" id="L33">        GenericResponse&lt;String&gt; response = new GenericResponse&lt;&gt;(ex.getMessage(), Message.DATA_NOT_FOUND.getMessageStatus(), reqBody);</span>
+<span class="nc" id="L34">        logger.error(&quot;response : &quot; + response);</span>
+<span class="nc" id="L35">        return ResponseEntity.notFound().build();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
